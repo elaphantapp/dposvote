@@ -1,29 +1,15 @@
 # dpos-vote
 
-## Project setup
+## 运行代码
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm i
+npm start
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## TODO
+* 联调server，用真实数据替换模拟数据
+* 和小程序母体app联调，并辨明交互逻辑
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 说明
+* /src/fake.js 是所有的模拟数据，格式供server api 部分参考。
