@@ -1,0 +1,202 @@
+<template>
+  <div class="kg-page p-NodeDetail">
+    <mt-header title="Node Details">
+      <router-link to="" slot="left">
+        <mt-button @click.native="$router.back(-1)" icon="back"></mt-button>
+      </router-link>
+      
+    </mt-header>
+
+    <div class="kg-body">
+      <div style="background:#fff;padding:0 15px;" v-if="!!node_detail">
+        
+        <div class="c-head">
+          <img src="../assets/logo.jpg" />
+          <span>{{node_detail.name}}</span>
+          <i class="fa fa-star" :class="{'active':node_detail.fav}"></i>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-45px -141px;"></div>
+          <p class="p1">Status</p>
+          <p class="p2">{{node_detail.status}}</p>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-70px -141px;"></div>
+          <p class="p1">Rank</p>
+          <p class="p2">{{node_detail.rank}}</p>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-97px -141px;"></div>
+          <p class="p1">Votes %</p>
+          <p class="p2">{{node_detail.percentage}}%</p>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-123px -140px; height:16px;"></div>
+          <p class="p1">Location</p>
+          <p class="p2">{{node_detail.location}}</p>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-149px -140px;width:16px;height:16px;"></div>
+          <p class="p1">URL</p>
+          <p class="p2">{{node_detail.url}}</p>
+        </div>
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
+          <p class="p1">Public key</p>
+          <p class="p2">
+            <span id="id_copy_text">{{node_detail.public_key}}</span>
+            <i class="c-copy kg-png btn" :data-clipboard-text="node_detail.public_key" style="background-position:-228px -142px;"></i>
+          </p>
+        </div>
+
+      </div>
+
+      <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 60px;" v-if="!!node_detail">
+        <div class="c-item" v-for="(v, k) in node_detail.votes_gap" v-bind:key="k">
+          <div class="c-icon kg-png" style="background-position:-201px -140px;height:16px;"></div>
+          <p class="p1">Votes gap VS No.{{k}}</p>
+          <p class="p2">{{v}} ELA votes</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="v-btn">
+      <mt-button @click="clickVoteBtn()" size="large" class="cb" type="primary">
+        Vote
+      </mt-button>
+    </div>
+
+    
+
+  </div>
+</template>
+<script>
+import util from '@/util';
+import ClipboardJS from 'clipboard';
+
+let tmp = null;
+export default {
+  data(){
+    return {
+      
+    };
+  },
+  computed: {
+    node_detail(){
+      if(this.$store.state.node_detail){
+        util.loading(false);
+        return this.$store.state.node_detail;
+      }
+
+      util.loading(true);
+      return null;
+    }
+  },
+  mounted(){
+    this.$store.dispatch('set_node_detail', {});
+  },
+  methods: {
+    clickVoteBtn(){
+      util.toastSuccess('click vote button');
+    }
+  },
+  created(){
+    tmp = new ClipboardJS('.c-copy');
+    tmp.on('success', function(e) {
+      util.toastInfo('copy successs');
+      console.log('copy text : '+ e.text);
+      e.clearSelection();
+    });
+  },
+  destroyed(){
+    if(tmp){
+      tmp.destroy();
+      tmp = null;
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.p-NodeDetail{
+  .c-head{
+    height: 40px;
+    position: relative;
+
+    img{
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+    span{
+      font-size: 17px;
+      position: absolute;
+      top: 8px;
+      left: 32px;
+      font-weight: 600;
+      color: #333;
+    }
+    i{
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: $light_color;
+
+      &.active{
+        color: $blue_color;
+      }
+    }
+  }
+  .c-item{
+    height: 72px;
+    position: relative;
+    border-bottom: 1px solid #f3f3f3;
+    .c-icon{
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 18px;
+      left: 5px;
+    }
+    .c-copy{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      position: relative;
+      top: 4px;
+      left: 10px;
+    }
+    .p1{
+      font-size: 15px;
+      color: #333;
+      position: absolute;
+      left: 32px;
+      top: 14px;
+      font-weight: 600;
+    }
+    .p2{
+      color: #888;
+      position: absolute;
+      left: 32px;
+      font-size: 13px;
+      top: 38px;
+    }
+  }
+
+  .v-btn{
+    position: fixed;
+    bottom: 20px;
+    
+    padding: 0 15px;
+    width: 100%;
+    .cb{
+      background-color: $blue_color;
+    }
+  }
+}
+</style>
+
+

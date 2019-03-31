@@ -1,0 +1,192 @@
+<template>
+  <div class="kg-page p-myVotes">
+    <mt-header title="My Votes">
+      
+    </mt-header>
+
+    <div class="kg-body kg-tab">
+      <div v-if="info" class="kg-gap" style="background:#f9f9f9; padding: 12px 15px;">
+        <div class="c-rule">
+          <p class="t1">voting power Used/Total (ELA)</p>
+          <p class="t2">{{info.vp_used}}/{{info.vp_total}}</p>
+
+          <button class="t3" @click="showPopUp()">
+            <i class="fa fa-question-circle-o"></i>
+            Rule
+          </button>
+        </div>
+      </div>
+      
+
+      <mt-navbar style="margin-top:12px;" v-model="selected">
+        <mt-tab-item id="all">All</mt-tab-item>
+        <mt-tab-item id="success">Success</mt-tab-item>
+        <mt-tab-item id="failure">Failure</mt-tab-item>
+      </mt-navbar>
+      <mt-tab-container v-model="selected" style="">
+        <mt-tab-container-item id="all">
+          <MyVoteBaseList v-for="(item, i) in list" v-bind:key="i" v-bind:data="item" />
+        </mt-tab-container-item>
+        <mt-tab-container-item id="success">
+          <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+        </mt-tab-container-item>
+        <mt-tab-container-item id="failure">
+          <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+        </mt-tab-container-item>
+      </mt-tab-container>
+
+    </div>
+
+    <mt-popup
+      v-model="popupVisible"
+      popup-transition="popup-fade">
+      <div class="c-popup">
+        <div class="c-header">Voting Rule</div>
+        <div class="c-body">
+          <ul>
+            <li>1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give the same node a maximum of 1 vote;
+            </li>
+            <li>After ELA has been used to cast votes (i.e., the vote has been successfully cast), the corresponding ELA will no longer be used in circulation. If ELA is transferred after being used for voting, then the original vote will naturally be revoked after transferring and there is no revoke period for revoking votes;
+            </li>
+          </ul>
+          <p class="p1"><b>More details</b></p>
+          <p class="p2"><a href="/">https://news.elastos.org/elastos-dpos-supernode-election-process/</a></p>
+          
+
+          <p class="p3">
+            <mt-button @click="popupVisible=false" size="large" type="primary">OK</mt-button>
+          </p>
+          
+        </div>
+      </div>
+    </mt-popup>
+
+  </div>
+</template>
+<script>
+import util from '@/util';
+import MyVoteBaseList from '../components/MyVoteBaseList';
+export default {
+  components : {
+    MyVoteBaseList
+  },
+  data(){
+    return {
+      popupVisible : false,
+      selected: 'all'
+    }
+  },
+  methods: {
+    showPopUp(){
+      this.popupVisible = true;
+    }
+  },
+  computed: {
+    info(){
+      if(this.$store.state.me_info){
+        util.loading(false);
+        return this.$store.state.me_info;
+      }
+
+      util.loading(true);
+      return null;
+    },
+    list(){
+      return util._.map(this.$store.state.my_votes_list, (item)=>{
+        item.time = util.moment(item.time).format('YYYY-MM-DD hh:mm');
+
+        return item;
+      });
+    }
+  },
+  mounted(){
+    this.$store.dispatch('set_me_info', {});
+    this.$store.dispatch('set_my_votes_list', {});
+  }
+}
+</script>
+<style lang="scss" scoped>
+.p-myVotes{
+  .c-rule{
+    height: 128px;
+    background: linear-gradient(to right, rgb(76, 85, 232) , rgb(128, 25, 255));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .t1{
+      color: rgb(189, 171, 249);
+      margin-top: 32px;
+      font-size: 15px;
+    }
+    .t2{
+      color: #fff;
+      margin-top: 5px;
+      font-size: 23px;
+    }
+    .t3{
+      position: absolute;
+      right: 12px;
+      bottom: 8px;
+      color: rgb(189, 171, 249);
+      font-size: 14px;
+    }
+  }
+
+  .c-popup{
+    width: 86vw;
+    padding: 0 0 18px;
+    text-align: left;
+
+    .c-header{
+      color: #545454;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 18px 0;
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    .c-body{
+      padding: 12px 25px;
+      ul{
+        list-style: square inside;
+      }
+      li{
+        color: rgb(98, 98, 98);
+        font-size: 15px;
+        line-height: 20px;
+      }
+
+      .p1{
+        margin-top: 15px;
+        b{
+          font-size: 14px;
+        }
+      }
+      .p2{
+        a{
+          color: $blue_color;
+          font-size: 15px;
+          line-height: 16px;
+          display: block;
+          margin-top: 4px;
+        }
+      }
+      .p3{
+        margin-top: 18px;
+        button{
+          background: $blue_color;
+        }
+      }
+    }
+  }
+  .mint-navbar{
+    background-color: transparent;
+  }
+
+}
+</style>
+
+
