@@ -1,6 +1,6 @@
 <template>
   <div class="p-nodes kg-page">
-    <mt-header title="Voting"></mt-header>
+    <mt-header :title="$t('VOTING')"></mt-header>
 
     <div class="kg-body kg-tab">
       <mt-search :value.sync="value" 
@@ -10,13 +10,13 @@
 
       <div class="c-filter">
         <div class="c-e" @click="clickFilter(1)" :class="filter_active==1?'active':''">
-          <p>Rank</p>
+          <p>{{$t('RANK')}}</p>
         </div>
         <div class="c-e" @click="clickFilter(2)" :class="filter_active==2?'active':''">
-          <p>Fav</p>
+          <p>{{$t('FAV')}}</p>
         </div>
         <div class="c-e" @click="clickFilter(3)" :class="filter_active==3?'active':''">
-          <p>Latest</p>
+          <p>{{$t('LATEST')}}</p>
         </div>
         <div class="c-e" @click="clickFilter(4)" :class="filter_active==4?'active':''">
           <p>A-Z</p>

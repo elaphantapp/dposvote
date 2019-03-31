@@ -1,6 +1,6 @@
 <template>
   <div class="p-myFav kg-page">
-    <mt-header title="Favorites">
+    <mt-header :title="$t('FAVORITES')">
     </mt-header>
 
     <div class="kg-body kg-tab">

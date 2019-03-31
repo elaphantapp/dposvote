@@ -10,11 +10,11 @@
     <div class="kg-body" v-if="data">
       <div class="c-top">
         <div class="c1">
-          <p class="p1">Votes: (ELA)</p>
+          <p class="p1">{{$t('VOTES')}}: (ELA)</p>
           <p class="p2">{{data.number}}</p>
         </div>
         <div class="c1">
-          <p class="p1">Nodes</p>
+          <p class="p1">{{$t('NODES')}}</p>
           <p class="p2">{{data.node}}</p>
         </div>
       </div>

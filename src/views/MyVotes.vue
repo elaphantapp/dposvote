@@ -1,27 +1,27 @@
 <template>
   <div class="kg-page p-myVotes">
-    <mt-header title="My Votes">
+    <mt-header :title="$t('MY_VOTES')">
       
     </mt-header>
 
     <div class="kg-body kg-tab">
       <div v-if="info" class="kg-gap" style="background:#f9f9f9; padding: 12px 15px;">
         <div class="c-rule">
-          <p class="t1">voting power Used/Total (ELA)</p>
+          <p class="t1">{{$t('VOTING_POWER_USED')}}/{{$t('TOTAL')}} (ELA)</p>
           <p class="t2">{{info.vp_used}}/{{info.vp_total}}</p>
 
           <button class="t3" @click="showPopUp()">
             <i class="fa fa-question-circle-o"></i>
-            Rule
+            {{$t('RULE')}}
           </button>
         </div>
       </div>
       
 
       <mt-navbar style="margin-top:12px;" v-model="selected">
-        <mt-tab-item id="all">All</mt-tab-item>
-        <mt-tab-item id="success">Success</mt-tab-item>
-        <mt-tab-item id="failure">Failure</mt-tab-item>
+        <mt-tab-item id="all">{{$t('ALL')}}</mt-tab-item>
+        <mt-tab-item id="success">{{$t('SUCCESS')}}</mt-tab-item>
+        <mt-tab-item id="failure">{{$t('FAILURE')}}</mt-tab-item>
       </mt-navbar>
       <mt-tab-container v-model="selected" style="">
         <mt-tab-container-item id="all">
@@ -41,15 +41,14 @@
       v-model="popupVisible"
       popup-transition="popup-fade">
       <div class="c-popup">
-        <div class="c-header">Voting Rule</div>
+        <div class="c-header">{{$t('VOTING_RULE')}}</div>
         <div class="c-body">
           <ul>
-            <li>1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give the same node a maximum of 1 vote;
+            <li>{{$t('rule_msg.1')}}
             </li>
-            <li>After ELA has been used to cast votes (i.e., the vote has been successfully cast), the corresponding ELA will no longer be used in circulation. If ELA is transferred after being used for voting, then the original vote will naturally be revoked after transferring and there is no revoke period for revoking votes;
-            </li>
+            <li>{{$t('rule_msg.2')}}</li>
           </ul>
-          <p class="p1"><b>More details</b></p>
+          <p class="p1"><b>{{$t('MORE_DETAIL')}}</b></p>
           <p class="p2"><a href="/">https://news.elastos.org/elastos-dpos-supernode-election-process/</a></p>
           
 

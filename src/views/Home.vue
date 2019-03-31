@@ -17,15 +17,15 @@
     <mt-tabbar v-model="active" v-if="tab_show">
       <mt-tab-item id="tab1">
         <i class="iconfont icon-nodes"></i>
-        <p>Nodes</p>
+        <p>{{$t('NODES')}}</p>
       </mt-tab-item>
       <mt-tab-item id="tab2">
         <i class="iconfont icon-fav"></i>
-        <p>Favorites</p> 
+        <p>{{$t('FAVORITES')}}</p> 
       </mt-tab-item>
       <mt-tab-item id="tab3">
         <i class="iconfont icon-vote"></i>
-        <p>My Votes</p> 
+        <p>{{$t('MY_VOTES')}}</p> 
       </mt-tab-item>
 
     </mt-tabbar>

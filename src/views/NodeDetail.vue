@@ -1,6 +1,6 @@
 <template>
   <div class="kg-page p-NodeDetail">
-    <mt-header title="Node Details">
+    <mt-header :title="$t('NODE_DETAILS')">
       <router-link to="" slot="left">
         <mt-button @click.native="$router.back(-1)" icon="back"></mt-button>
       </router-link>
@@ -17,22 +17,22 @@
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-45px -141px;"></div>
-          <p class="p1">Status</p>
+          <p class="p1">{{$t('STATUS')}}</p>
           <p class="p2">{{node_detail.status}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-70px -141px;"></div>
-          <p class="p1">Rank</p>
+          <p class="p1">{{$t('RANK')}}</p>
           <p class="p2">{{node_detail.rank}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-97px -141px;"></div>
-          <p class="p1">Votes %</p>
+          <p class="p1">{{$t('VOTES')}} %</p>
           <p class="p2">{{node_detail.percentage}}%</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-123px -140px; height:16px;"></div>
-          <p class="p1">Location</p>
+          <p class="p1">{{$t('LOCATION')}}</p>
           <p class="p2">{{node_detail.location}}</p>
         </div>
         <div class="c-item">
@@ -63,7 +63,7 @@
 
     <div class="v-btn">
       <mt-button @click="clickVoteBtn()" size="large" class="cb" type="primary">
-        Vote
+        {{$t('VOTE')}}
       </mt-button>
     </div>
 
