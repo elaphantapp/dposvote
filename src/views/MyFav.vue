@@ -3,7 +3,7 @@
     <mt-header title="Favorites">
     </mt-header>
 
-    <div class="kg-body">
+    <div class="kg-body kg-tab">
       <div class="c-list">
         <VotingListItem 
           v-for="(item, i) in list" v-bind:key="i" 
