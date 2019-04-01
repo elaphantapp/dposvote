@@ -120,7 +120,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .p-myVoteDetail{
   .c-top{
     background: #fff;

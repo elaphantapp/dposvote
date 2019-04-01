@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="p-app">
 
     
     <mt-tab-container :swipeable="false" v-model="active">
@@ -80,8 +80,8 @@ export default {
 }
 </script>
 
-<style scoped lang='scss'>
-#app {
+<style lang='scss'>
+.p-app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

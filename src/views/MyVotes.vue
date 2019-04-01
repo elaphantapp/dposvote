@@ -104,7 +104,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .p-myVotes{
   .c-rule{
     height: 128px;
@@ -130,6 +130,8 @@ export default {
       bottom: 8px;
       color: rgb(189, 171, 249);
       font-size: 14px;
+      background: transparent;
+      border: none;
     }
   }
 

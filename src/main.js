@@ -8,6 +8,8 @@ import language from './i18n';
 
 import 'mint-ui/lib/style.css'
 import 'font-awesome/css/font-awesome.min.css';
+
+import './assets/index.css';
 import './style.scss';
 
 Vue.use(VueI18n)

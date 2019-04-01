@@ -131,7 +131,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .p-nodes{
   .c-filter{
     margin-top: 12px;

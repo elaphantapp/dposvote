@@ -117,7 +117,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .p-NodeDetail{
   .c-head{
     height: 40px;
