@@ -1,11 +1,11 @@
 <template>
   <div class="kg-page p-NodeDetail">
-    <mt-header :title="$t('NODE_DETAILS')">
+    <!-- <mt-header :title="$t('NODE_DETAILS')">
       <router-link to="" slot="left">
         <mt-button @click.native="$router.back(-1)" icon="back"></mt-button>
       </router-link>
       
-    </mt-header>
+    </mt-header> -->
 
     <div class="kg-body">
       <div style="background:#fff;padding:0 15px;" v-if="!!node_detail">

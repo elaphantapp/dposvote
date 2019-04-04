@@ -1,11 +1,11 @@
 <template>
   <div class="kg-page p-myVoteDetail">
-    <mt-header title="Detail">
+    <!-- <mt-header title="Detail">
       <router-link to="" slot="left">
         <mt-button @click.native="$router.back(-1)" icon="back"></mt-button>
       </router-link>
       
-    </mt-header>
+    </mt-header> -->
 
     <div class="kg-body" v-if="data">
       <div class="c-top">

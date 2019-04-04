@@ -1,6 +1,6 @@
 <template>
   <div class="p-nodes kg-page">
-    <mt-header :title="$t('VOTING')"></mt-header>
+    <!-- <mt-header :title="$t('VOTING')"></mt-header> -->
 
     <div class="kg-body kg-tab">
       <mt-search :value.sync="value" 

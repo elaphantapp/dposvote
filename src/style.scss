@@ -24,12 +24,12 @@ $light_color: #edeef5;
   background: rgb(242, 242, 249);
 }
 .kg-body{
-  height: calc(100vh - 52px);
+  height: calc(100vh);
   overflow-x: hidden;
   overflow-y: auto;
 
   &.kg-tab{
-    height: calc(100vh - 52px - 55px);
+    height: calc(100vh - 55px);
   }
 }
 .kg-gap{

@@ -1,8 +1,8 @@
 <template>
   <div class="kg-page p-myVotes">
-    <mt-header :title="$t('MY_VOTES')">
+    <!-- <mt-header :title="$t('MY_VOTES')">
       
-    </mt-header>
+    </mt-header> -->
 
     <div class="kg-body kg-tab">
       <div v-if="info" class="kg-gap" style="background:#f9f9f9; padding: 12px 15px;">

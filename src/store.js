@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import util from '@/util';
 import fake from '@/fake';
 
+import request from './request';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -70,6 +72,7 @@ export default new Vuex.Store({
       util.request(param, fake.node_list).then((list)=>{
         commit('set_node_list', list);
       })
+
     },
     set_node_detail({commit, state}, param){
       commit('set_node_detail', null);
