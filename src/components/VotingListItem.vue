@@ -12,17 +12,17 @@
     </div>
 
     <div class="c-bdy">
-      <p class="p p1">{{item.name}}</p>
+      <p class="p p1">{{item.Nickname}}</p>
       <p class="p p2">{{index}}</p>
       <i class="kg-png p p3"></i>
       <i class="kg-png p p4"></i>
-      <p class="p p5">{{item.location}}</p>
-      <p class="p p6">+{{item.reward}} ELA/year</p>
+      <p class="p p5">{{$t('country')[item.Location]}}</p>
+      <p class="p p6">+{{item.EstRewardPerYear}} ELA/year (EST)</p>
       <i class="fa fa-star p p7" :class="item.fav?'active':''"></i>
-      <p class="p p8">{{item.votes}} votes</p>
-      <p class="p p9">{{item.percentage}}%</p>
+      <p class="p p8">{{item.Votes}} votes</p>
+      <p class="p p9">{{item.Percentage}}%</p>
 
-      <div class="c-per" :style="{width:(item.percentage+'%')}"></div>
+      <div class="c-per" :style="{width:(item.Percentage+'%')}"></div>
     </div>
     
   </div>

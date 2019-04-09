@@ -7,6 +7,29 @@ import request from './request';
 
 Vue.use(Vuex);
 
+const F = {
+  processNodeList(list){
+    return util._.map(list, (item)=>{
+      if(util._.isUndefined(item.selected)){
+        item.selected = false;
+      }
+      item.Location = item.Location.toString();
+      item.id = item.Address;
+      item.Percentage = Math.fround((item.Votes/item.Value)*100).toFixed(2);
+      return item;
+    });
+  },
+  getFavList(){
+    const list = util.ls.get('fav_list');
+    if(!list) return [];
+
+    return list;
+  },
+  setFavList(list){
+    util.ls.set('fav_list', list);
+  }
+};
+
 export default new Vuex.Store({
   state: {
     node_list : null,
@@ -22,12 +45,7 @@ export default new Vuex.Store({
   mutations: {
     set_node_list(state, list){
       
-      state.node_list = util._.map(list, (item)=>{
-        if(util._.isUndefined(item.selected)){
-          item.selected = false;
-        }
-        return item;
-      });
+      state.node_list = F.processNodeList(list);
     },
     set_current_node(state, node){
       state.current_node = node;
@@ -69,16 +87,35 @@ export default new Vuex.Store({
   },
   actions: {
     set_node_list({ commit, state }, param){
-      util.request(param, fake.node_list).then((list)=>{
-        commit('set_node_list', list);
+      const cache_list = util.rc.get('node_list');
+      if(cache_list){
+        commit('set_node_list', cache_list);
+        return false;
+      }
+
+      request.getCurrentBlockHeight().then((d)=>{
+        const height = d.result;
+        request.getNodeList(height).then((d)=>{
+          util.rc.set('node_list', util._.clone(d.result));
+          console.log(1, d)
+          const list = d.result;
+          commit('set_node_list', list);
+        })
       })
 
     },
-    set_node_detail({commit, state}, param){
+
+
+    set_node_detail({commit, state}, id){
       commit('set_node_detail', null);
-      util.request(param, fake.node_detail).then((json)=>{
-        commit('set_node_detail', json);
-      })
+      const json = util._.find(state.node_list, (item)=>{
+        return item.id === id;
+      });
+      commit('set_node_detail', json);
+
+      // request.getNodeInfoByAddress(id).then((d)=>{
+      //   console.log(2, d);
+      // })
     },
     set_my_votes_list({commit}, param){
       util.request(param, fake.my_votes_list).then((list)=>{
@@ -95,10 +132,25 @@ export default new Vuex.Store({
         commit('set_my_vote_detail', json);
       })
     },
+
     set_my_fav_list({commit}, param){
-      util.request(param, fake.node_list).then((list)=>{
-        commit('set_my_fav_list', list);
-      })
+      const list = F.getFavList();
+      commit('set_my_fav_list', list);
+    },
+
+    addFavItem({commit, state}, item){
+      let list = F.getFavList();
+      list.unshift(item);
+
+      F.setFavList(list);
+      
+    },
+    removeFavItem({}, param){
+      const list = F.getFavList();
+      util._.remove(list, (item)=>{
+        return item.id === param.id;
+      });
+      F.setFavList(list);
     }
   }
 })

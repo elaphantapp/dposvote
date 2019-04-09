@@ -10,6 +10,19 @@ module.exports = {
         `
       }
     }
+  },
+  devServer: {
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://api-wallet-ela-testnet.elastos.org',
+    //     changeOrigin: true,
+    //     // "pathRewrite": {
+    //     //   "^/api/": "/api"
+    //     // },
+    //     // disableHostCheck: false
+    
+    //   }
+    // }
   }
 
 }

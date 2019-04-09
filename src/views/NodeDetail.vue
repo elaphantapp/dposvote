@@ -12,40 +12,40 @@
         
         <div class="c-head">
           <img src="../assets/logo.jpg" />
-          <span>{{node_detail.name}}</span>
+          <span>{{node_detail.Nickname}}</span>
           <i class="fa fa-star" :class="{'active':node_detail.fav}"></i>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-45px -141px;"></div>
           <p class="p1">{{$t('STATUS')}}</p>
-          <p class="p2">{{node_detail.status}}</p>
+          <p class="p2">{{node_detail.State}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-70px -141px;"></div>
           <p class="p1">{{$t('RANK')}}</p>
-          <p class="p2">{{node_detail.rank}}</p>
+          <p class="p2">{{node_detail.Rank}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-97px -141px;"></div>
           <p class="p1">{{$t('VOTES')}} %</p>
-          <p class="p2">{{node_detail.percentage}}%</p>
+          <p class="p2">{{node_detail.Percentage}}%</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-123px -140px; height:16px;"></div>
           <p class="p1">{{$t('LOCATION')}}</p>
-          <p class="p2">{{node_detail.location}}</p>
+          <p class="p2">{{$t('country')[node_detail.Location]}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-149px -140px;width:16px;height:16px;"></div>
           <p class="p1">URL</p>
-          <p class="p2">{{node_detail.url}}</p>
+          <p class="p2">{{node_detail.Url}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
           <p class="p1">Public key</p>
           <p class="p2">
-            <span id="id_copy_text">{{node_detail.public_key}}</span>
-            <i class="c-copy kg-png btn" :data-clipboard-text="node_detail.public_key" style="background-position:-228px -142px;"></i>
+            <span id="id_copy_text" style="max-width:62%;text-overflow:ellipsis;overflow:hidden;float:left;">{{node_detail.Producer_public_key}}</span>
+            <i class="c-copy kg-png btn" :data-clipboard-text="node_detail.Producer_public_key" style="background-position:-228px -142px;float:left"></i>
           </p>
         </div>
 
@@ -85,16 +85,17 @@ export default {
   computed: {
     node_detail(){
       if(this.$store.state.node_detail){
-        util.loading(false);
+        // util.loading(false);
         return this.$store.state.node_detail;
       }
 
-      util.loading(true);
+      // util.loading(true);
       return null;
     }
   },
   mounted(){
-    this.$store.dispatch('set_node_detail', {});
+    const param = this.$router.history.current.params.id;
+    this.$store.dispatch('set_node_detail', param);
   },
   methods: {
     clickVoteBtn(){

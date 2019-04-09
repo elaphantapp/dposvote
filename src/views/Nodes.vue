@@ -125,7 +125,7 @@ export default {
     }
   },
 
-  mounted(){
+  created(){
     this.$store.dispatch('set_node_list', {});
   }
 }
