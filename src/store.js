@@ -47,13 +47,28 @@ export default new Vuex.Store({
     me_info : null,
     my_fav_list : null,
 
-    current_tab : 'tab1'
+    current_tab : 'tab1',
+
+    node_page_filter : 1,   // 1 rank, 2 fav, 3 latest, 4 asc
   },
   mutations: {
     set_node_list(state, list){
-      
-      state.node_list = F.processNodeList(list);
-      console.log(11, state.node_list)
+      let tmp = F.processNodeList(list);
+      if(state.node_page_filter === 2){
+        state.node_list = util._.filter(tmp, (item)=>{
+          return item.fav;
+        })
+      }
+      else if(state.node_page_filter === 4){
+        state.node_list = tmp.sort((a, b)=>{
+          return a.Nickname.charCodeAt(0) - b.Nickname.charCodeAt(0)
+        });
+      }
+      else{
+        state.node_list = tmp;
+      }
+
+      console.log('node_list', state.node_page_filter, state.node_list)
     },
     set_current_node(state, node){
       state.current_node = node;
@@ -86,6 +101,10 @@ export default new Vuex.Store({
 
     set_tab(state, tab){
       state.current_tab = tab;
+    },
+
+    set_node_page_filter(state, filter){
+      state.node_page_filter = filter;
     }
   },
   actions: {
@@ -145,9 +164,8 @@ export default new Vuex.Store({
       let list = F.getFavList();
       list.unshift(item);
 
-      store.dispatch('set_node_list', {});
-
       F.setFavList(list);
+      store.dispatch('set_node_list', {});
       
     },
     removeFavItem(store, param){
@@ -155,8 +173,9 @@ export default new Vuex.Store({
       util._.remove(list, (item)=>{
         return item.id === param.id;
       });
-      store.dispatch('set_node_list', {});
+      
       F.setFavList(list);
+      store.dispatch('set_node_list', {});
     }
   }
 })

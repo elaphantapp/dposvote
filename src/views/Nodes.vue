@@ -62,7 +62,6 @@ export default {
   data(){
     return {
       value : '',
-      filter_active : 1,
       vote_status : 'list',
 
       select : {
@@ -73,9 +72,9 @@ export default {
   },
   methods : {
     clickFilter(index){
-      this.filter_active = index;
-      //TODO
-      this.$store.dispatch('set_node_list', {filter: index});
+      
+      this.$store.commit('set_node_page_filter', index);
+      this.$store.dispatch('set_node_list', {});
     },
 
     clickItem(item){
@@ -131,11 +130,19 @@ export default {
 
       util.loading(true);
       return [];
+    },
+    filter_active(){
+      return this.$store.state.node_page_filter;
     }
   },
 
   created(){
-    this.$store.dispatch('set_node_list', {});
+    util.register('set_tab', (key, tab)=>{
+      if(tab === 'tab1'){
+        this.$store.dispatch('set_node_list', {});
+      }
+    })
+    
   }
 }
 </script>

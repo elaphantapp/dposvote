@@ -58,8 +58,9 @@ export default {
   },
   watch: {
     active(val, oldVal){
-      console.log(val, oldVal);
       this.$store.commit('set_tab', val);
+      util.publish('set_tab', val);
+      console.log('set_tab', val, oldVal);
     }
   },
   components: {

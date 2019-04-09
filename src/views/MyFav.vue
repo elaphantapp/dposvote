@@ -10,6 +10,7 @@
           v-bind:status="vote_status"
           v-bind:clickFn="clickItem"
           v-bind:item="item" 
+          v-bind:favFn="favItem"
           v-bind:index="i+1">
         
         </VotingListItem>
@@ -34,20 +35,32 @@ export default {
     list(){
       if(this.$store.state.my_fav_list){
         // util.loading(false);
-        return this.$store.state.my_fav_list;
+        const list = util._.map(this.$store.state.my_fav_list, (item)=>{
+          item.fav = true;
+          return item;
+        });
+        return list;
       }
 
       // util.loading(true);
       return [];
     }
   },
-  mounted(){
-    this.$store.dispatch('set_my_fav_list', {});
+  created(){
+    util.register('set_tab', (key, tab)=>{
+      if(tab === 'tab2'){
+        this.$store.dispatch('set_my_fav_list', {});
+      }
+    })
   },
 
   methods: {
     clickItem(item){
       this.$router.push('/node_detail/'+item.id);
+    },
+    favItem(item){
+      this.$store.dispatch('removeFavItem', item);
+      this.$store.dispatch('set_my_fav_list', {});
     }
   }
 }
