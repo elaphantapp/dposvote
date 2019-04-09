@@ -33,17 +33,18 @@ export default {
   computed: {
     list(){
       if(this.$store.state.my_fav_list){
-        util.loading(false);
+        // util.loading(false);
         return this.$store.state.my_fav_list;
       }
 
-      util.loading(true);
+      // util.loading(true);
       return [];
     }
   },
   mounted(){
     this.$store.dispatch('set_my_fav_list', {});
   },
+
   methods: {
     clickItem(item){
       this.$router.push('/node_detail/'+item.id);

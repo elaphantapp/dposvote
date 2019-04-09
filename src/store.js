@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 const F = {
   processNodeList(list){
+    const fav_list = F.getFavList();
     return util._.map(list, (item)=>{
       if(util._.isUndefined(item.selected)){
         item.selected = false;
@@ -16,6 +17,12 @@ const F = {
       item.Location = item.Location.toString();
       item.id = item.Address;
       item.Percentage = Math.fround((item.Votes/item.Value)*100).toFixed(2);
+
+      const flag = util._.findIndex(fav_list, (l)=>{
+        return l.id === item.id;
+      });
+      item.fav = flag !== -1;
+
       return item;
     });
   },
@@ -46,6 +53,7 @@ export default new Vuex.Store({
     set_node_list(state, list){
       
       state.node_list = F.processNodeList(list);
+      console.log(11, state.node_list)
     },
     set_current_node(state, node){
       state.current_node = node;
@@ -73,12 +81,7 @@ export default new Vuex.Store({
       
     },
     set_my_fav_list(state, list){
-      state.my_fav_list = util._.map(list, (item)=>{
-        if(util._.isUndefined(item.selected)){
-          item.selected = false;
-        }
-        return item;
-      });
+      state.my_fav_list = list;
     },
 
     set_tab(state, tab){
@@ -138,18 +141,21 @@ export default new Vuex.Store({
       commit('set_my_fav_list', list);
     },
 
-    addFavItem({commit, state}, item){
+    addFavItem(store, item){
       let list = F.getFavList();
       list.unshift(item);
+
+      store.dispatch('set_node_list', {});
 
       F.setFavList(list);
       
     },
-    removeFavItem({}, param){
+    removeFavItem(store, param){
       const list = F.getFavList();
       util._.remove(list, (item)=>{
         return item.id === param.id;
       });
+      store.dispatch('set_node_list', {});
       F.setFavList(list);
     }
   }

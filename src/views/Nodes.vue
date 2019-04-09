@@ -28,6 +28,7 @@
           v-for="(item, i) in list" v-bind:key="i" 
           v-bind:status="vote_status"
           v-bind:clickFn="clickItem"
+          v-bind:favFn="favItem"
           v-bind:item="item" 
           v-bind:index="i+1">
         </VotingListItem>
@@ -85,6 +86,14 @@ export default {
         // vote
         item.selected = !item.selected;
         this.processSelectNumber();
+      }
+    },
+    favItem(item){
+      if(item.fav){
+        this.$store.dispatch('removeFavItem', item);
+      }
+      else{
+        this.$store.dispatch('addFavItem', item);
       }
     },
 
