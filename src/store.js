@@ -50,10 +50,16 @@ export default new Vuex.Store({
     current_tab : 'tab1',
 
     node_page_filter : 1,   // 1 rank, 2 fav, 3 latest, 4 asc
+    node_page_search : '',
   },
   mutations: {
     set_node_list(state, list){
       let tmp = F.processNodeList(list);
+      if(state.node_page_search){
+        tmp = util._.filter(tmp, (item)=>{
+          return _.includes(item.Nickname, state.node_page_search);
+        });
+      }
       if(state.node_page_filter === 2){
         state.node_list = util._.filter(tmp, (item)=>{
           return item.fav;
@@ -105,6 +111,10 @@ export default new Vuex.Store({
 
     set_node_page_filter(state, filter){
       state.node_page_filter = filter;
+    },
+
+    set_node_page_search(state, search){
+      state.node_page_search = search;
     }
   },
   actions: {

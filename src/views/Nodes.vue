@@ -3,7 +3,7 @@
     <!-- <mt-header :title="$t('VOTING')"></mt-header> -->
 
     <div class="kg-body kg-tab">
-      <mt-search :value.sync="value" 
+      <mt-search v-model="value" 
         cancel-text="Cancel"
         placeholder="serach..."
         style="height:auto;" />
@@ -64,6 +64,10 @@ export default {
       value : '',
       vote_status : 'list',
 
+      fn : {
+        search_debounce : null
+      },
+
       select : {
         n : 0,
         t : 0
@@ -118,6 +122,11 @@ export default {
 
     clickVoteBtn(){
       alert('click vote button');
+    },
+
+    searchForList(text){
+      this.$store.commit('set_node_page_search', text);
+      this.$store.dispatch('set_node_list', {});
     }
   },
 
@@ -143,6 +152,17 @@ export default {
       }
     })
     
+  },
+  watch: {
+    value(v, ov){
+      if(!this.fn.search_debounce){
+        this.fn.search_debounce = util._.debounce(()=>{
+          this.searchForList(this.value);
+        }, 500);
+      }
+      this.fn.search_debounce.call(this);
+      
+    }
   }
 }
 </script>
@@ -205,6 +225,9 @@ export default {
     .cb{
       background-color: $blue_color;
     }
+  }
+  .mint-search-list{
+    display: none;
   }
 }
 </style>

@@ -7,8 +7,11 @@
     </div>
 
     <div class="c-icon">
-      <img src="../assets/logo.jpg" />
-      <i class="c-status" :class="{'s1':item.network_status==='online', 's2':item.network_status==='offline'}"></i>
+      <img src="../assets/avatar.png" />
+      <i class="c-status" :class="{
+        's1':item.State==='Activate', 
+        's2':item.State==='Inactivate'
+      }"></i>
     </div>
 
     <div class="c-bdy">

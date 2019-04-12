@@ -11,7 +11,7 @@
       <div style="background:#fff;padding:0 15px;" v-if="!!node_detail">
         
         <div class="c-head">
-          <img src="../assets/logo.jpg" />
+          <img src="../assets/avatar.png" />
           <span>{{node_detail.Nickname}}</span>
           <i class="fa fa-star" :class="{'active':node_detail.fav}"></i>
         </div>
