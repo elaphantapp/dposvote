@@ -26,6 +26,10 @@ const F = {
 
   getNodeInfoByAddress(address){
     return _axios.get('/dpos/address/'+address);
+  },
+
+  getTotalVotes(height){
+    return _axios.get('/dpos/vote/height/'+height);
   }
 };
 

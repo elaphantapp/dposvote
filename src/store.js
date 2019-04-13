@@ -8,7 +8,7 @@ import request from './request';
 Vue.use(Vuex);
 
 const F = {
-  processNodeList(list){
+  processNodeList(list, total){
     const fav_list = F.getFavList();
     return util._.map(list, (item)=>{
       if(util._.isUndefined(item.selected)){
@@ -16,7 +16,10 @@ const F = {
       }
       item.Location = item.Location.toString();
       item.id = item.Address;
-      item.Percentage = Math.fround((item.Votes/item.Value)*100).toFixed(2);
+      item.Percentage = 0; 
+      if(total){
+        item.Percentage = Math.fround((item.Votes/total)*100).toFixed(2);
+      }
 
       const flag = util._.findIndex(fav_list, (l)=>{
         return l.id === item.id;
@@ -51,10 +54,14 @@ export default new Vuex.Store({
 
     node_page_filter : 1,   // 1 rank, 2 fav, 3 latest, 4 asc
     node_page_search : '',
+
+    global : {
+      total_vote : null
+    }
   },
   mutations: {
     set_node_list(state, list){
-      let tmp = F.processNodeList(list);
+      let tmp = F.processNodeList(list, state.global.total_vote);
       if(state.node_page_search){
         tmp = util._.filter(tmp, (item)=>{
           return _.includes(item.Nickname, state.node_page_search);
@@ -115,6 +122,11 @@ export default new Vuex.Store({
 
     set_node_page_search(state, search){
       state.node_page_search = search;
+    },
+
+    set_global(state, param){
+      const tmp = util._.extend(state.global, param||{});
+      Vue.set(state.global, tmp);
     }
   },
   actions: {
@@ -127,12 +139,19 @@ export default new Vuex.Store({
 
       request.getCurrentBlockHeight().then((d)=>{
         const height = d.result;
-        request.getNodeList(height).then((d)=>{
-          util.rc.set('node_list', util._.clone(d.result));
-          console.log(1, d)
-          const list = d.result;
-          commit('set_node_list', list);
+        request.getTotalVotes(height).then((d)=>{
+          console.log(2, d);
+          commit('set_global', {
+            total_vote : d.result
+          });
+          request.getNodeList(height).then((d)=>{
+            util.rc.set('node_list', util._.clone(d.result));
+            console.log(1, d)
+            const list = d.result;
+            commit('set_node_list', list);
+          })
         })
+        
       })
 
     },
