@@ -168,15 +168,24 @@ export default new Vuex.Store({
       //   console.log(2, d);
       // })
     },
-    set_my_votes_list({commit}, param){
-      util.request(param, fake.my_votes_list).then((list)=>{
-        commit('set_my_votes_list', list);
-      })
-    },
+
     set_me_info({commit}, param){
-      util.request(param, fake.me_info).then((info)=>{
-        commit('set_me_info', info);
-      })
+      const data = util.transformUserData();
+      request.getElaByAddress(data.Data.ELAAddress).then((d)=>{
+        
+        data.ela_total = d.result;
+        data.vp_used = 0;
+
+        request.getVoteByAddress(data.Data.ELAAddress).then((d)=>{
+          util._.each(d.result, (item)=>{
+            data.vp_used += parseInt(item.Value, 10);
+          })
+
+          commit('set_my_votes_list', d.result);
+        })
+
+        commit('set_me_info', data);
+      });
     },
     set_my_vote_detail({commit}, param){
       util.request(param, fake.my_vote_detail).then((json)=>{

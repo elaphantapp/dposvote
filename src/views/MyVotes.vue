@@ -8,7 +8,7 @@
       <div v-if="info" class="kg-gap" style="background:#f9f9f9; padding: 12px 15px;">
         <div class="c-rule">
           <p class="t1">{{$t('VOTING_POWER_USED')}}/{{$t('TOTAL')}} (ELA)</p>
-          <p class="t2">{{info.vp_used}}/{{info.vp_total}}</p>
+          <p class="t2">{{info.vp_used}}/{{info.ela_total}}</p>
 
           <button class="t3" @click="showPopUp()">
             <i class="fa fa-question-circle-o"></i>
@@ -86,6 +86,7 @@ export default {
     info(){
       if(this.$store.state.me_info){
         util.loading(false);
+        console.log(11, this.$store.state.me_info)
         return this.$store.state.me_info;
       }
 
@@ -102,7 +103,8 @@ export default {
   },
   mounted(){
     this.$store.dispatch('set_me_info', {});
-    this.$store.dispatch('set_my_votes_list', {});
+
+
   }
 }
 </script>

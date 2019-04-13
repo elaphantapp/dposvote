@@ -30,6 +30,14 @@ const F = {
 
   getTotalVotes(height){
     return _axios.get('/dpos/vote/height/'+height);
+  },
+
+  getElaByAddress(address){
+    return _axios.get('/balance/'+address);
+  },
+
+  getVoteByAddress(address){
+    return _axios.get('/dpos/address/'+address);
   }
 };
 
