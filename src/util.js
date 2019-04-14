@@ -122,8 +122,8 @@ export default{
 
 
   getRequestUserDataUrl(){
-    const CallbackUrl = '/';
-    return `elaphant://identity?CallbackUrl=http://localhost:8081/packet/grab/1509893100600982-0&Description=rket&AppID=cc053c61afc22dda9a309e96943c1734&SerialNumber=368F42311054A0B1FF35EF08F274E917417132734461A84F0D48C8864E356D26&PublicKey=028971D6DA990971ABF7E8338FA1A81E1342D0E0FD8C4D2A4DF68F776CA66EA0B1&Signature=90E8A60DC055C90F4765E91B6E4F07031F55CF7DD2DA4EF1EF55EA41D160CB48879F62D70EC8ED090E4CBBE013D21E7580C36CFA2173A997ADADB7255B23098F&Amount=0.011200&PaymentAddress=EdBndwMd3WsgqKRoZMPyAG5r9jMw4wJrTK&DID=ihKwfxiFpYme8mb11roShjjpZcHt1Ru5VB&CoinName=ELA&RandomNumber=123456&AppName=cket&RequestInfo=btcaddress,ethaddress,email,phonenumber,randomnumber&ReturnUrl=${CallbackUrl}`;
+    const return_url = _user_data.callbackUrl;
+    return `elaphant://identity?Description=rket&AppID=cc053c61afc22dda9a309e96943c1734&SerialNumber=368F42311054A0B1FF35EF08F274E917417132734461A84F0D48C8864E356D26&PublicKey=028971D6DA990971ABF7E8338FA1A81E1342D0E0FD8C4D2A4DF68F776CA66EA0B1&Signature=90E8A60DC055C90F4765E91B6E4F07031F55CF7DD2DA4EF1EF55EA41D160CB48879F62D70EC8ED090E4CBBE013D21E7580C36CFA2173A997ADADB7255B23098F&Amount=0.011200&PaymentAddress=EdBndwMd3WsgqKRoZMPyAG5r9jMw4wJrTK&DID=ihKwfxiFpYme8mb11roShjjpZcHt1Ru5VB&CoinName=ELA&RandomNumber=123456&AppName=cket&RequestInfo=btcaddress,ethaddress,email,phonenumber,randomnumber&ReturnUrl=${return_url}`;
   },
 
   buildVoteSchema(nodePublicKeyList){

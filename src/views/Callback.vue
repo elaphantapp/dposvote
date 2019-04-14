@@ -13,6 +13,7 @@ export default {
     if(txid){
       // vote callback
       console.log('callback->txid : '+txid);
+      location.href = '#/';
     }
   }
 }
