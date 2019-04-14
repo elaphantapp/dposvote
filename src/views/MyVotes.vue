@@ -66,7 +66,6 @@
 import util from '@/util';
 import MyVoteBaseList from '../components/MyVoteBaseList';
 
-console.log(JSON.stringify(util.transformUserData()))
 export default {
   components : {
     MyVoteBaseList
@@ -102,7 +101,7 @@ export default {
     }
   },
   mounted(){
-    this.$store.dispatch('set_me_info', {});
+    
 
 
   }

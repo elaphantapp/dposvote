@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import NodeDetail from './views/NodeDetail';
 import MyVoteDetail from './views/MyVoteDetail';
+import Callback from './views/Callback';
 
 
 Vue.use(Router)
@@ -29,6 +30,11 @@ export default new Router({
       path : '/vote_detail/:id',
       name : 'vote_detail',
       component : MyVoteDetail
+    },
+    {
+      path : '/return_url',
+      name : 'return_url',
+      component : Callback
     }
   ]
 })
