@@ -99,6 +99,9 @@ export default {
       this.popupVisible = true;
 
     }
+    else{
+      console.log('user data: ', ud);
+    }
   },
   methods: {
     requestUserData(){
