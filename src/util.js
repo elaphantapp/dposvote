@@ -109,7 +109,7 @@ export default{
   getUserData(){
     const d = ls.get('user-data');
     console.log(444, d);
-    if(!d['PublicKey']){
+    if(!d || !d['PublicKey']){
       return null;
     }
 
