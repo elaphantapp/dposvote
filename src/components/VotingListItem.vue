@@ -21,7 +21,7 @@
       <i class="kg-png p p4"></i>
       <p class="p p5">{{$t('country')[item.Location]}}</p>
       <p class="p p6">+{{item.EstRewardPerYear}} ELA/year (EST)</p>
-      <i @click="toggleFav($event)" class="fa fa-star p p7" :class="item.fav?'active':''"></i>
+      <i v-if="showFav" @click="toggleFav($event)" class="fa fa-star p p7" :class="item.fav?'active':''"></i>
       <p class="p p8">{{item.Votes}} votes</p>
       <p class="p p9">{{item.Percentage}}%</p>
 
@@ -38,7 +38,11 @@ export default {
     index : Number,
     status : null,  //list, vote 
     clickFn : null,
-    favFn : null
+    favFn : null,
+    showFav : {
+      type : Boolean,
+      default : true
+    }
   },
   mounted() {
     

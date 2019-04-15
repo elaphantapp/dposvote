@@ -121,8 +121,7 @@ export default {
   background: rgba(255,255,255,0.7) !important;
 
   .v-btn{
-    position: absolute;
-    top: 35%;
+    margin-top: 300px;
     
     padding: 0 15px;
     width: 100%;

@@ -95,17 +95,16 @@ export default new Vuex.Store({
     set_me_info(state, info){
       state.me_info = info;
     },
-    set_my_vote_detail(state, json){
-      if(json.node_list){
-        json.node_list = util._.map(json.node_list, (item)=>{
-          if(util._.isUndefined(item.selected)){
-            item.selected = false;
-          }
-          return item;
-        });
-      }
-      console.log(11, json);
-      state.my_vote_detail = json;
+    set_my_vote_detail(state){
+      const map = {};
+      const list = state.my_votes_list;
+      util._.each(list, (item)=>{
+        item.list = F.processNodeList(item.Vote_Body, state.global.total_vote);
+        map[item.Vote_Header.Txid] = item;
+
+      });
+      
+      state.my_vote_detail = map;
       
     },
     set_my_fav_list(state, list){
@@ -171,6 +170,7 @@ export default new Vuex.Store({
 
     set_me_info({commit}){
       const data = util.getUserData();
+      data.Data.ELAAddress = 'ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9'
       request.getElaByAddress(data.Data.ELAAddress).then((d)=>{
         
         data.ela_total = d.result;
@@ -178,20 +178,18 @@ export default new Vuex.Store({
 
         request.getVoteByAddress(data.Data.ELAAddress).then((d)=>{
           util._.each(d.result, (item)=>{
-            data.vp_used += parseInt(item.Value, 10);
+            // console.log(parseFloat(item.Vote_Header.Value))
+            data.vp_used += parseFloat(item.Vote_Header.Value);
           })
 
           commit('set_my_votes_list', d.result);
+          commit('set_my_vote_detail');
         })
 
         commit('set_me_info', data);
       });
     },
-    set_my_vote_detail({commit}, param){
-      util.request(param, fake.my_vote_detail).then((json)=>{
-        commit('set_my_vote_detail', json);
-      })
-    },
+
 
     set_my_fav_list({commit}, param){
       const list = F.getFavList();

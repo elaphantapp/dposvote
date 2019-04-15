@@ -27,10 +27,12 @@
 
       <div class="c-list" style="margin-top: 8px; padding-bottom: 60px;">
         <VotingListItem 
-          v-for="(item, i) in data.node_list" v-bind:key="i" 
+          v-for="(item, i) in data.list" v-bind:key="i" 
           v-bind:status="vote_status"
           v-bind:clickFn="clickItem"
+          v-bind:favFn="favItem"
           v-bind:item="item" 
+          :showFav="false"
           v-bind:index="i+1">
         
         </VotingListItem>
@@ -71,29 +73,45 @@ export default {
 
   computed: {
     data(){
-      if(this.$store.state.my_vote_detail){
-        util.loading(false);
-        this.$store.state.my_vote_detail.time = util.moment(this.$store.state.my_vote_detail.time).format('YYYY-MM-DD hh:mm');
-        return this.$store.state.my_vote_detail;
-      }
-
       util.loading(true);
+      if(this.$store.state.my_vote_detail){
+    
+        const id = this.$router.history.current.params.id;
+        const d = this.$store.state.my_vote_detail[id];
+
+        console.log(222, d)
+    
+        util.loading(false);
+        return d;
+      }
+      
+      this.$router.replace('/');
       return null;
     }
   },
-  mounted(){
-    this.$store.dispatch('set_my_vote_detail', {});
+  created(){
+
   },
   methods: {
     clickItem(item){
       if(this.vote_status === 'list'){
-        this.$router.push('/node_detail/'+item.id);
+        this.$store.commit('set_node_detail', item);
+        this.$router.push('/my_node_detail');
       }
       else{
         // vote
         item.selected = !item.selected;
         this.processSelectNumber();
       }
+    },
+    favItem(item){
+      // if(item.fav){
+      //   item.fav = false;
+      // }
+      // else{
+      //   item.fav = true;
+      // }
+      
     },
     clickVoteBtn1(){
       this.vote_status = 'vote';

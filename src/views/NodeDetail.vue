@@ -95,7 +95,10 @@ export default {
   },
   mounted(){
     const param = this.$router.history.current.params.id;
-    this.$store.dispatch('set_node_detail', param);
+    if(param){
+      this.$store.dispatch('set_node_detail', param);
+    }
+    
   },
   methods: {
     clickVoteBtn(){

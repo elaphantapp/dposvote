@@ -27,6 +27,11 @@ export default new Router({
       component : NodeDetail
     },
     {
+      path: '/my_node_detail',
+      name : 'my_node_detail',
+      component : NodeDetail
+    },
+    {
       path : '/vote_detail/:id',
       name : 'vote_detail',
       component : MyVoteDetail

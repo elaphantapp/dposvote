@@ -19,19 +19,15 @@
       
       
       <mt-navbar style="margin-top:12px;" v-model="selected">
-        <mt-tab-item id="all">{{$t('ALL')}}</mt-tab-item>
         <mt-tab-item id="success">{{$t('SUCCESS')}}</mt-tab-item>
         <mt-tab-item id="failure">{{$t('FAILURE')}}</mt-tab-item>
       </mt-navbar>
       <mt-tab-container v-model="selected" style="">
-        <mt-tab-container-item id="all">
+        <mt-tab-container-item id="success">
           <MyVoteBaseList v-for="(item, i) in list" v-bind:key="i" v-bind:data="item" />
         </mt-tab-container-item>
-        <mt-tab-container-item id="success">
-          <mt-cell v-for="n in 4" :title="'测试 ' + n" />
-        </mt-tab-container-item>
         <mt-tab-container-item id="failure">
-          <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+          
         </mt-tab-container-item>
       </mt-tab-container>
 
@@ -77,7 +73,7 @@ export default {
   data(){
     return {
       popupVisible : false,
-      selected: 'all',
+      selected: 'success',
       test : ''
     }
   },
@@ -88,10 +84,8 @@ export default {
   },
   computed: {
     info(){
-      console.log(222, this.$store.state.me_info)
       if(this.$store.state.me_info){
-        util.loading(false);
-        console.log(11, this.$store.state.me_info)
+        // util.loading(false);
         return this.$store.state.me_info;
       }
 
@@ -99,8 +93,13 @@ export default {
       return null;
     },
     list(){
+      
       return util._.map(this.$store.state.my_votes_list, (item)=>{
         item.time = util.moment(item.time).format('YYYY-MM-DD hh:mm');
+        item.id = item.Vote_Header.Txid;
+        item.number = item.Vote_Header.Value;
+        item.node = item.Vote_Header.Node_num;
+
 
         return item;
       });
@@ -114,6 +113,10 @@ export default {
       }
     }, 5000)
 
+    const ud = util.getUserData();
+    if(ud){
+      this.$store.dispatch('set_me_info', {});
+    }
 
   }
 }
