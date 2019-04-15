@@ -17,7 +17,7 @@
         </div>
       </div>
       
-
+      
       <mt-navbar style="margin-top:12px;" v-model="selected">
         <mt-tab-item id="all">{{$t('ALL')}}</mt-tab-item>
         <mt-tab-item id="success">{{$t('SUCCESS')}}</mt-tab-item>
@@ -35,7 +35,11 @@
         </mt-tab-container-item>
       </mt-tab-container>
 
+
+<div style="word-break:break-all;padding:10px 15px;">{{test}}</div>
     </div>
+
+    
 
     <mt-popup
       v-model="popupVisible"
@@ -73,7 +77,8 @@ export default {
   data(){
     return {
       popupVisible : false,
-      selected: 'all'
+      selected: 'all',
+      test : ''
     }
   },
   methods: {
@@ -83,6 +88,7 @@ export default {
   },
   computed: {
     info(){
+      console.log(222, this.$store.state.me_info)
       if(this.$store.state.me_info){
         util.loading(false);
         console.log(11, this.$store.state.me_info)
@@ -101,7 +107,12 @@ export default {
     }
   },
   mounted(){
-    
+    util._.delay(()=>{
+      const ud = util.getUserData();
+      if(ud){
+        this.test = JSON.stringify(ud.Data);
+      }
+    }, 5000)
 
 
   }

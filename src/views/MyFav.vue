@@ -26,6 +26,7 @@ export default {
   data(){
     return {
       vote_status : 'list',
+      
     };
   },
   components: {
@@ -62,6 +63,10 @@ export default {
       this.$store.dispatch('removeFavItem', item);
       this.$store.dispatch('set_my_fav_list', {});
     }
+  },
+
+  mounted(){
+    
   }
 }
 </script>
