@@ -4,10 +4,19 @@ import moment from 'moment';
 import PubSub from 'pubsub-js';
 import { Toast } from 'mint-ui';
 
-const _user_data = {
-  appId : '14bd1d772afc8e633ce95b988646bd9ed5df65cb33ec98a43b41e6cb6de5276ca9cce91d069dc688619f1a250842b37d380d4fb984c9f912a2f86edcf5dddba9',
-  appName : 'vote.h5.app',
+const config = {
+  appId : '317DD1D2188C459EB24EAEBC81932F6ADB305FF66F073AB1DC767869EF2B1A04273A8A8754652DA3B89E7692BEA99FA3A1E0B2CD767377300AA4A7B0E8C7D00E',
+  appName : 'dopsvote.h5.app',
+  appSign : '4109FDAD1EB5D3AD2B02D4BC62822268E0F04FCE0FF3A82D2AF1A6B88787815D920026D209154B3BCEC210B73418613E2358E8EE326F6C8F536AFD7EABAE5C99',
+  appDid : 'iiJRtAn6wyHaMSDQPS9Kkft3iiNjH5tTmi',
+  appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
+  appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
+  appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : '#/return_url',
+  random : '998877'
+};
+const _user_data = {
+  ...config
 };
 
 const _cache = {};
@@ -94,36 +103,49 @@ export default{
     });
   },
 
+  getConfig(){
+    return config;
+  },
   getUserData(){
-    if(!_user_data['PublicKey']){
+    const d = ls.get('user-data');
+    console.log(444, d);
+    if(!d['PublicKey']){
       return null;
     }
 
-    return _user_data;
+    return d;
   },
   setUserData(queryString){
+    queryString = '%7B%22Data%22%3A%22%7B%5C%22BTCAddress%5C%22%3A%5C%221PncAFvqJ3oxBEvwKZYUDhzsujMbQRhDLM%5C%22%2C%5C%22DID%5C%22%3A%5C%22iUTRuu8Pt9nMEmWVzKwD2DhhyQcPUbjVnp%5C%22%2C%5C%22ELAAddress%5C%22%3A%5C%22ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9%5C%22%2C%5C%22EMail%5C%22%3A%5C%22%5C%22%2C%5C%22ETHAddress%5C%22%3A%5C%220x6001f701d41ac5D0fca3aE9a258982EB9888C37c%5C%22%2C%5C%22Nickname%5C%22%3A%5C%22low%E5%9B%BE%E5%90%90%E4%BA%86%5C%22%2C%5C%22PhoneNumber%5C%22%3A%5C%22%5C%22%2C%5C%22PublicKey%5C%22%3A%5C%22032a3cb74e66879690b6f5bb41e032451bc7abe5ee3b72955f754b25e44dbfce73%5C%22%2C%5C%22RandomNumber%5C%22%3A%5C%22123456%5C%22%7D%22%2C%22PublicKey%22%3A%22032a3cb74e66879690b6f5bb41e032451bc7abe5ee3b72955f754b25e44dbfce73%22%2C%22Sign%22%3A%22aa9dd89cb96a0c10db0b621d6dcf8e0e8b2c6455a754190258513b28cd93c8ff224c3a81748e30a6357181ed111da3ed318bec30815572d2a1f0e7682b06b6d9%22%7D'
     const tmp = JSON.parse(decodeURIComponent(queryString));
     const d = {
       Data : JSON.parse(tmp.Data),
       PublicKey : tmp.PublicKey,
       Sign : tmp.Sign
     };
-
+console.log(222, tmp, d);
     _.extend(_user_data, d);
+
+    ls.set('user-data', _user_data);
   },
 
   getUrlParam(name){
-    const t = location.hash.replace(_user_data.callbackUrl, '');
+    const t = location.hash.replace(_user_data.callbackUrl, '').replace(/%09/g, '');
     const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    const r = t.substr(1).match(reg);
+    const r = decodeURIComponent(t).substr(1).match(reg);
     if (r) return unescape(r[2]);
     return null;
   },
 
 
-  getRequestUserDataUrl(){
-    const return_url = _user_data.callbackUrl;
-    return `elaphant://identity?Description=rket&AppID=cc053c61afc22dda9a309e96943c1734&SerialNumber=368F42311054A0B1FF35EF08F274E917417132734461A84F0D48C8864E356D26&PublicKey=028971D6DA990971ABF7E8338FA1A81E1342D0E0FD8C4D2A4DF68F776CA66EA0B1&Signature=90E8A60DC055C90F4765E91B6E4F07031F55CF7DD2DA4EF1EF55EA41D160CB48879F62D70EC8ED090E4CBBE013D21E7580C36CFA2173A997ADADB7255B23098F&Amount=0.011200&PaymentAddress=EdBndwMd3WsgqKRoZMPyAG5r9jMw4wJrTK&DID=ihKwfxiFpYme8mb11roShjjpZcHt1Ru5VB&CoinName=ELA&RandomNumber=123456&AppName=cket&RequestInfo=btcaddress,ethaddress,email,phonenumber,randomnumber&ReturnUrl=${return_url}`;
+  buildRequestUserDataUrl(){
+    const d = _user_data;
+    const url = `elaphant://identity?CallbackUrl=${d.callbackUrl}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
+
+    console.log('login schema => '+url);
+    window.open(url);
+    
+    return url;
   },
 
   buildVoteSchema(nodePublicKeyList){

@@ -89,7 +89,7 @@ export default {
         return this.$store.state.me_info;
       }
 
-      util.loading(true);
+      // util.loading(true);
       return null;
     },
     list(){
