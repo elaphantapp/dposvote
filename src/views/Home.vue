@@ -115,13 +115,13 @@ export default {
 .login-popup{
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: fixed;
+  // top: 0 !important;
+  left: 0 !important;
   background: rgba(255,255,255,0.7) !important;
 
   .v-btn{
-    margin-top: 300px;
+    margin-top: 100px;
     
     padding: 0 15px;
     width: 100%;

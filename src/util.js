@@ -142,7 +142,7 @@ export default{
     const url = `elaphant://identity?CallbackUrl=${d.callbackUrl}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
 
     console.log('login schema => '+url);
-    window.open(url);
+    location.href = url;
     
     return url;
   },
