@@ -113,7 +113,8 @@ export default{
     return config;
   },
   getUserData(){
-    const d = ls.get('user-data');
+    // const d = ls.get('user-data');
+    const d = _user_data;
     console.log(444, d);
     if(!d || !d['PublicKey']){
       return null;
@@ -131,7 +132,7 @@ export default{
     };
     _.extend(_user_data, d);
 
-    ls.set('user-data', _user_data);
+    // ls.set('user-data', _user_data);
   },
 
   getUrlParam(name){
