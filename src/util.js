@@ -12,7 +12,8 @@ const config = {
   appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
-  callbackUrl : '#/return_url',
+  callbackUrl : 'index.html/#/return_url',
+  // callbackUrl : '',
   random : '998877'
 };
 const _user_data = {
@@ -144,8 +145,11 @@ export default{
 
   buildRequestUserDataUrl(){
     const d = _user_data;
-    const url = `elaphant://identity?ReturnUrl=${d.callbackUrl}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
 
+    const rt = encodeURIComponent(d.callbackUrl);
+    let url = `elaphant://identity?ReturnUrl=${rt}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
+
+    // url = encodeURIComponent(url);
     console.log('login schema => '+url);
     location.href = url;
     
@@ -159,10 +163,13 @@ export default{
       return '"'+k+'"';
     }).join(',');
 
-    const url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.PublicKey}&Sign=${d.Sign}&DID=${d.Data.DID}&AppName=${d.appName}&ReturnUrl=/${d.callbackUrl}&CandidatePublicKeys=[${to}]`;
+    const rt = encodeURIComponent(d.callbackUrl);
+    let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.PublicKey}&Sign=${d.Sign}&DID=${d.Data.DID}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=[${to}]`;
 
+    url = encodeURIComponent(url);
     console.log('vote schema => '+url);
-    window.open(url);
+    location.href = url;
+    
     return url;
   }
 
