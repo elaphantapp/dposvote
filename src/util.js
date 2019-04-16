@@ -19,6 +19,10 @@ const _user_data = {
   ...config
 };
 
+const isChrome = ()=>{
+  return navigator.userAgent.indexOf('Chrome') !== -1;
+}
+
 const _cache = {};
 const rc = {
   set(key, rs){
@@ -62,6 +66,7 @@ export default{
   moment,
   rc,
   ls,
+  isChrome,
   loading(flag=false){
     if(flag){
       Indicator.open({
@@ -139,7 +144,7 @@ export default{
 
   buildRequestUserDataUrl(){
     const d = _user_data;
-    const url = `elaphant://identity?CallbackUrl=${d.callbackUrl}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
+    const url = `elaphant://identity?ReturnUrl=${d.callbackUrl}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
 
     console.log('login schema => '+url);
     location.href = url;
