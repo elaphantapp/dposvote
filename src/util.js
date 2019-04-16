@@ -12,7 +12,7 @@ const config = {
   appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
-  callbackUrl : 'index.html/#/return_url',
+  callbackUrl : 'https://liyangwood.github.io/dpos_vote/#/return_url',
   // callbackUrl : '',
   random : '998877'
 };
@@ -152,6 +152,7 @@ export default{
     // url = encodeURIComponent(url);
     console.log('login schema => '+url);
     location.href = url;
+    
     
     return url;
   },
