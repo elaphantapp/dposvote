@@ -13,6 +13,7 @@ const config = {
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : 'https://liyangwood.github.io/dpos_vote/#/return_url',
+  // callbackUrl : 'http://10.237.188.36:8080/#/return_url',
   // callbackUrl : '',
   random : '998877'
 };
@@ -150,7 +151,6 @@ export default{
     const rt = encodeURIComponent(d.callbackUrl);
     let url = `elaphant://identity?ReturnUrl=${rt}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=RandomNumber,Email,phoneNumber,Nickname,btcaddress,ethaddres`;
 
-    // url = encodeURIComponent(url);
     console.log('login schema => '+url);
     location.href = url;
     
@@ -166,9 +166,9 @@ export default{
     }).join(',');
 
     const rt = encodeURIComponent(d.callbackUrl);
-    let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.PublicKey}&Sign=${d.Sign}&DID=${d.Data.DID}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=[${to}]`;
+    const pp = encodeURIComponent(`[${to}]`);
+    let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Sign=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
 
-    url = encodeURIComponent(url);
     console.log('vote schema => '+url);
     location.href = url;
     

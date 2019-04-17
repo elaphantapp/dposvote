@@ -98,7 +98,8 @@ export default {
         this.$store.dispatch('set_me_info', {});
       }
       else{
-        this.popupVisible = true;
+        // this.popupVisible = true;
+        this.requestUserData();
       }
       
       
