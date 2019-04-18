@@ -40,7 +40,7 @@
       <div class="kg-png" slot="icon"></div>
     </div>
 
-    <div class="v-btn">
+    <div class="v-btn" v-if="vote_status==='vote'">
       <mt-button @click="clickVoteBtn()" :disabled="select.n<1" size="large" class="cb" type="primary">
         Vote <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
@@ -219,7 +219,7 @@ export default {
     position: absolute;
     right: 20px;
     z-index: 99;
-    bottom: 20px;
+    bottom: 50px;
     padding: 0;
 
     .kg-png{
@@ -232,7 +232,7 @@ export default {
   }
   .v-btn{
     position: absolute;
-    bottom: -38px;
+    bottom: -10px;;
     
     padding: 0 15px;
     width: 100%;

@@ -86,6 +86,7 @@ export default {
     node_detail(){
       if(this.$store.state.node_detail){
         // util.loading(false);
+        console.log(111, this.$store.state.node_detail)
         return this.$store.state.node_detail;
       }
 
@@ -102,7 +103,7 @@ export default {
   },
   methods: {
     clickVoteBtn(){
-      util.toastSuccess('click vote button');
+      const url = util.buildVoteSchema([this.node_detail.Producer_public_key]);
     }
   },
   created(){
@@ -192,7 +193,7 @@ export default {
 
   .v-btn{
     position: fixed;
-    bottom: 20px;
+    bottom: 56px;
     
     padding: 0 15px;
     width: 100%;

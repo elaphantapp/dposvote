@@ -150,6 +150,10 @@ export default {
     color: #9c9c9c;
   }
 
+  .c-hide{
+    opacity: 0 !important;
+  }
+
   p{
     font-size: 14px;
     line-height: normal;

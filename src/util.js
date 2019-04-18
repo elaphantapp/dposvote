@@ -13,7 +13,7 @@ const config = {
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : 'https://liyangwood.github.io/dpos_vote/#/return_url',
-  // callbackUrl : 'http://10.237.188.36:8080/#/return_url',
+  // callbackUrl : 'http://192.168.1.102:8080/#/return_url',
   // callbackUrl : '',
   random : '998877'
 };
@@ -116,7 +116,6 @@ export default{
   getUserData(){
     // const d = ls.get('user-data');
     const d = _user_data;
-    console.log(444, d);
     if(!d || !d['PublicKey']){
       return null;
     }
@@ -166,8 +165,12 @@ export default{
     }).join(',');
 
     const rt = encodeURIComponent(d.callbackUrl);
-    const pp = encodeURIComponent(`[${to}]`);
-    let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Sign=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
+    const pp = (`[${to}]`);
+    let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
+
+    let xx = `
+    elaphant://eladposvote?AppID=14bd1d772afc8e633ce95b988646bd9ed5df65cb33ec98a43b41e6cb6de5276ca9cce91d069dc688619f1a250842b37d380d4fb984c9f912a2f86edcf5dddba9&PublicKey=03ef5f8b0534c82aa4db218f7cead278124efc0411e4ca38b6131954a58e8ae3c0&Sign=298bd67a87865117f94689eb853de85119a74feedbbbe720ce63db40f698a2048f8bedef059a2980dfb17c8d8851d872748ec931e8354cdc65b28116165a416a&DID=igjFHgkyjxMp2dCCVLZ2JosXgDcunauX8D&AppName=vote.h5.app&ReturnUrl=https://www.vote.org&CallbackUrl=https://www.vote.org&CandidatePublicKeys=["02f033b85ada2c9aceb5a25fe4e6f09bd5294cab0254e1a5650cc1182cb324dde2","03477bcd06aa2eeff56f68f2b5608da93d0452b57925fd88dc4491b8406ef53380","0340a6b762eb5bdacc93ed2481a53b580ba517b18596aa64249b5135588cd3260f","02ae26793e4d1c8eafa8337f025b96a9aa95ceea31400ab505e47fc4e141f9c81e","037f7e9adc693b953eed1f76fcbbf51999f06d8e16e06de2ce3769eceb01b954e7"]
+    `
 
     console.log('vote schema => '+url);
     location.href = url;

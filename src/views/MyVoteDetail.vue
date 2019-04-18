@@ -32,12 +32,16 @@
           v-bind:clickFn="clickItem"
           v-bind:favFn="favItem"
           v-bind:item="item" 
-          :showFav="false"
+          
           v-bind:index="i+1">
         
         </VotingListItem>
       </div>
 
+    </div>
+
+    <div class="x-btn" @click="toggleListStatus()">
+      <div class="kg-png" slot="icon"></div>
     </div>
 
     <div class="v-btn">
@@ -56,6 +60,7 @@
 <script>
 import util from '@/util';
 import VotingListItem from '../components/VotingListItem';
+import Vue from 'vue'
 export default {
   components : {
     VotingListItem
@@ -73,7 +78,7 @@ export default {
 
   computed: {
     data(){
-      util.loading(true);
+      // util.loading(true);
       if(this.$store.state.my_vote_detail){
     
         const id = this.$router.history.current.params.id;
@@ -81,7 +86,7 @@ export default {
 
         console.log(222, d)
     
-        util.loading(false);
+        // util.loading(false);
         return d;
       }
       
@@ -101,7 +106,12 @@ export default {
       else{
         // vote
         item.selected = !item.selected;
-        this.processSelectNumber();
+        this.vote_status = 'list';
+        this.$nextTick(()=>{
+          this.vote_status = 'vote';
+          this.processSelectNumber();
+        })
+        
       }
     },
     favItem(item){
@@ -118,22 +128,39 @@ export default {
       this.processSelectNumber();
     },
     clickVoteBtn2(){
-      util.toastSuccess('click vote btn');
+      // util.toastSuccess('click vote btn');
 
-      util._.delay(()=>{
-        this.vote_status = 'list';
-      }, 3000);
+      // util._.delay(()=>{
+      //   this.vote_status = 'list';
+      // }, 3000);
+
+      const list = [];
+      util._.each(this.data.list, (item)=>{
+        if(item.selected){
+          list.push(item.Producer_public_key);
+        }
+        
+      });
+      const url = util.buildVoteSchema(list);
       
     },
     processSelectNumber(){
-      const t = util._.size(this.data.node_list);
-      const n = util._.size(util._.filter(this.data.node_list, (item)=>{
+      const t = util._.size(this.data.list);
+      const n = util._.size(util._.filter(this.data.list, (item)=>{
         return item.selected;
       }));
 
       this.select = {
         t, n
       };
+    },
+
+    toggleListStatus(){
+      this.vote_status = this.vote_status === 'list' ? 'vote' : 'list';
+
+      if(this.vote_status === 'vote'){
+        this.processSelectNumber();
+      }
     },
   }
 }
@@ -198,6 +225,22 @@ export default {
       font-size: 13px;
       right: 15px;
       top: 1px;
+    }
+  }
+
+  .x-btn{
+    position: absolute;
+    right: 20px;
+    z-index: 99;
+    bottom: 80px;
+    padding: 0;
+
+    .kg-png{
+      width: 44px;
+      height: 44px;
+      background-position: -202px -42px;
+      border-radius: 22px;
+      box-shadow: 0 3px 6px $blue_color;
     }
   }
 

@@ -32,7 +32,7 @@
       </mt-tab-container>
 
 
-<div style="word-break:break-all;padding:10px 15px;">{{test}}</div>
+<!-- <div style="word-break:break-all;padding:10px 15px;">{{test}}</div> -->
     </div>
 
     
@@ -109,7 +109,7 @@ export default {
     util._.delay(()=>{
       const ud = util.getUserData();
       if(ud){
-        this.test = JSON.stringify(ud.Data);
+        this.test = JSON.stringify(ud.Data) + '\n' +navigator.userAgent;
       }
     }, 5000)
 

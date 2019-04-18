@@ -15,7 +15,7 @@ const F = {
         item.selected = false;
       }
       item.Location = item.Location.toString();
-      item.id = item.Address;
+      item.id = item.Address || item.Nodepublickey;
       item.Percentage = 0; 
       if(total){
         item.Percentage = Math.fround((item.Votes/total)*100).toFixed(2);
@@ -47,6 +47,7 @@ export default new Vuex.Store({
     node_detail : null,
     my_votes_list : null,
     my_vote_detail : null,
+    my_vote_detail_list : null,
     me_info : null,
     my_fav_list : null,
 
@@ -103,7 +104,6 @@ export default new Vuex.Store({
         map[item.Vote_Header.Txid] = item;
 
       });
-      
       state.my_vote_detail = map;
       
     },
