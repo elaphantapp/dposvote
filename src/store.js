@@ -200,7 +200,12 @@ export default new Vuex.Store({
       let list = F.getFavList();
       list.unshift(item);
 
+      list = list.sort((a, b)=>{
+        return a.Index - b.Index;
+      })
+
       F.setFavList(list);
+      util.toastInfo('success');
       store.dispatch('set_node_list', {});
       
     },
@@ -211,6 +216,7 @@ export default new Vuex.Store({
       });
       
       F.setFavList(list);
+      util.toastInfo('success');
       store.dispatch('set_node_list', {});
     }
   }

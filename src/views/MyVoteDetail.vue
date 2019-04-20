@@ -40,9 +40,9 @@
 
     </div>
 
-    <div class="x-btn" @click="toggleListStatus()">
+    <!-- <div class="x-btn" @click="toggleListStatus()">
       <div class="kg-png" slot="icon"></div>
-    </div>
+    </div> -->
 
     <div class="v-btn">
       <mt-button v-if="vote_status==='list'" @click="clickVoteBtn1()" size="large" class="cb" type="primary">

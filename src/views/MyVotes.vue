@@ -49,7 +49,7 @@
             <li>{{$t('rule_msg.2')}}</li>
           </ul>
           <p class="p1"><b>{{$t('MORE_DETAIL')}}</b></p>
-          <p class="p2"><a href="/">https://news.elastos.org/elastos-dpos-supernode-election-process/</a></p>
+          <p class="p2"><a href="https://news.elastos.org/elastos-dpos-supernode-election-process">https://news.elastos.org/elastos-dpos-supernode-election-process/</a></p>
           
 
           <p class="p3">

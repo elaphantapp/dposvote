@@ -16,8 +16,10 @@ Vue.use(VueI18n)
 Vue.use(MintUI);
 Vue.config.productionTip = false;
 
+const dl = navigator.language === 'zh-CN' ? 'zh' : 'en';
+
 const i18n = new VueI18n({
-  locale: 'zh',
+  locale: dl,
   messages : language
 })
 

@@ -160,6 +160,8 @@ export default {
         this.$store.dispatch('set_node_list', {});
       }
     })
+
+    util.toastInfo(this.$i18n.locale);
     
   },
   watch: {
