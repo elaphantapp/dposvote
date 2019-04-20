@@ -16,8 +16,9 @@ export default {
   FAILURE : '失败',
   VOTING_RULE : '投票规则',
   rule_msg : {
-    '1' : '1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give the same node a maximum of 1 vote;',
-    '2' : 'After ELA has been used to cast votes (i.e., the vote has been successfully cast), the corresponding ELA will no longer be used in circulation. If ELA is transferred after being used for voting, then the original vote will naturally be revoked after transferring and there is no revoke period for revoking votes;'
+    '1' : '1个ELA最多给36个不同的节点投票，1个ELA给同一个节点最多只能投1票;',
+    '2' : '如果投票之后进行转出交易，会导致之前的投票失效，需要再次进行投票；您也可以在转出交易的同时勾选自动投票；',
+    link : 'https://news-zh.elastos.org/亦来云dpos超级节点竞选细则/'
   },
   MORE_DETAIL : '更多信息',
   RE_VOTE : '重新投票',
