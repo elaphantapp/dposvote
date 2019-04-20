@@ -161,7 +161,6 @@ export default {
       }
     })
 
-    util.toastInfo(this.$i18n.locale);
     
   },
   watch: {
