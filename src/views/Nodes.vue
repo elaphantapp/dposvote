@@ -42,7 +42,7 @@
 
     <div class="v-btn" v-if="vote_status==='vote'">
       <mt-button @click="clickVoteBtn()" :disabled="select.n<1" size="large" class="cb" type="primary">
-        Vote <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
+        {{$t('VOTES')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
     </div>
     
@@ -94,9 +94,11 @@ export default {
     favItem(item){
       if(item.fav){
         this.$store.dispatch('removeFavItem', item);
+        this.$store.dispatch('set_node_list', {});
       }
       else{
         this.$store.dispatch('addFavItem', item);
+        this.$store.dispatch('set_node_list', {});
       }
     },
 

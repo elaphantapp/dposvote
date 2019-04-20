@@ -20,7 +20,7 @@
       <i class="kg-png p p3"></i>
       <i class="kg-png p p4"></i>
       <p class="p p5">{{$t('country')[item.Location]}}</p>
-      <p class="p p6">+{{item.EstRewardPerYear}} ELA/year (EST)</p>
+      <p class="p p6">+{{item.EstRewardPerYear}} ELA/{{$t('YEAR')}} ({{$t('EST')}})</p>
       <i v-if="showFav" @click="toggleFav($event)" class="fa fa-star p p7" :class="item.fav?'active':''"></i>
       <p class="p p8">{{item.Value}} votes</p>
       <p class="p p9">{{item.Percentage}}%</p>

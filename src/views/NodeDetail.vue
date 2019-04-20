@@ -27,7 +27,7 @@
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-97px -141px;"></div>
-          <p class="p1">{{$t('VOTES')}} %</p>
+          <p class="p1">{{$t('VOTE')}} %</p>
           <p class="p2">{{node_detail.Percentage}}%</p>
         </div>
         <div class="c-item">
@@ -42,7 +42,7 @@
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
-          <p class="p1">Public key</p>
+          <p class="p1">{{$t('PUBLIC_KEY')}}</p>
           <p class="p2">
             <span id="id_copy_text" style="max-width:62%;text-overflow:ellipsis;overflow:hidden;float:left;">{{node_detail.Producer_public_key}}</span>
   
@@ -64,7 +64,7 @@
 
     <div class="v-btn">
       <mt-button @click="clickVoteBtn()" size="large" class="cb" type="primary">
-        {{$t('VOTE')}}
+        {{$t('VOTES')}}
       </mt-button>
     </div>
 

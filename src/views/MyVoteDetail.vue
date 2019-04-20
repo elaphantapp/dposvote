@@ -10,7 +10,7 @@
     <div class="kg-body" v-if="data">
       <div class="c-top">
         <div class="c1">
-          <p class="p1">{{$t('VOTES')}}: (ELA)</p>
+          <p class="p1">{{$t('VOTE')}}: (ELA)</p>
           <p class="p2">{{data.number}}</p>
         </div>
         <div class="c1">
@@ -46,10 +46,10 @@
 
     <div class="v-btn">
       <mt-button v-if="vote_status==='list'" @click="clickVoteBtn1()" size="large" class="cb" type="primary">
-        Re-Vote
+        {{$t('RE_VOTE')}}
       </mt-button>
       <mt-button v-if="vote_status==='vote'" @click="clickVoteBtn2()" :disabled="select.n<1" size="large" class="cb" type="primary">
-        Vote <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
+        {{$t('VOTES')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
     </div>
 
@@ -115,12 +115,17 @@ export default {
       }
     },
     favItem(item){
-      // if(item.fav){
-      //   item.fav = false;
-      // }
-      // else{
-      //   item.fav = true;
-      // }
+      if(item.fav){
+        this.$store.dispatch('removeFavItem', item);
+      }
+      else{
+        this.$store.dispatch('addFavItem', item);
+      }
+      item.fav = !item.fav;
+      this.vote_status = 'vote';
+      this.$nextTick(()=>{
+        this.vote_status = 'list';
+      })
       
     },
     clickVoteBtn1(){

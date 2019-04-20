@@ -24,6 +24,9 @@ export default {
   VOTES : 'Votes',
   STATUS : 'Status',
   LOCATION : 'Location',
+  YEAR : 'year',
+  EST : 'EST',
+  PUBLIC_KEY : 'Public Key',
 
 
   country : {

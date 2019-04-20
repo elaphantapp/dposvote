@@ -15,14 +15,14 @@ const F = {
         item.selected = false;
       }
       item.Location = item.Location.toString();
-      item.id = item.Address || item.Nodepublickey;
+      item.id = item.Producer_public_key || item.Address || item.Nodepublickey;
       item.Percentage = 0; 
       if(total){
         item.Percentage = Math.fround((item.Votes/total)*100).toFixed(2);
       }
 
       const flag = util._.findIndex(fav_list, (l)=>{
-        return l.id === item.id;
+        return l.Producer_public_key === item.Producer_public_key;
       });
       item.fav = flag !== -1;
 
@@ -198,6 +198,15 @@ export default new Vuex.Store({
 
     addFavItem(store, item){
       let list = F.getFavList();
+
+      const x = util._.find(list, (x)=>{
+        return x.Producer_public_key === item.Producer_public_key;
+      })
+      if(x){
+        util.toastInfo('success');
+        return false;
+      }
+
       list.unshift(item);
 
       list = list.sort((a, b)=>{
@@ -206,7 +215,7 @@ export default new Vuex.Store({
 
       F.setFavList(list);
       util.toastInfo('success');
-      store.dispatch('set_node_list', {});
+      
       
     },
     removeFavItem(store, param){
@@ -217,7 +226,7 @@ export default new Vuex.Store({
       
       F.setFavList(list);
       util.toastInfo('success');
-      store.dispatch('set_node_list', {});
+      
     }
   }
 })
