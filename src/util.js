@@ -22,7 +22,8 @@ const _user_data = {
 };
 
 const isChrome = ()=>{
-  return navigator.userAgent.indexOf('Chrome') !== -1;
+  const ua = navigator.userAgent.toLowerCase()
+  return ua.indexOf('chrome') !== -1 && ua.indexOf('android') === -1;
 }
 
 const _cache = {};
