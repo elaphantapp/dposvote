@@ -5,7 +5,7 @@
     <div class="kg-body kg-tab">
       <mt-search v-model="value" 
         cancel-text="Cancel"
-        placeholder="serach..."
+        placeholder="search..."
         style="height:auto;" />
 
       <div class="c-filter">

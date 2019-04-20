@@ -45,14 +45,15 @@
           <p class="p1">Public key</p>
           <p class="p2">
             <span id="id_copy_text" style="max-width:62%;text-overflow:ellipsis;overflow:hidden;float:left;">{{node_detail.Producer_public_key}}</span>
-            <i class="c-copy kg-png btn" :data-clipboard-text="node_detail.Producer_public_key" style="background-position:-228px -142px;float:left"></i>
+  
+            <button class="c-copy kg-png btn" :data-clipboard-text="node_detail.Producer_public_key" style="background-position:-228px -142px; float:left; border:none;"></button>
           </p>
         </div>
 
       </div>
 
-      <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 60px;" v-if="!!node_detail">
-        <div class="c-item" v-for="(v, k) in node_detail.votes_gap" v-bind:key="k">
+      <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 0px;" v-if="votes_gap">
+        <div class="c-item" v-for="(v, k) in votes_gap" v-bind:key="k">
           <div class="c-icon kg-png" style="background-position:-201px -140px;height:16px;"></div>
           <p class="p1">Votes gap VS No.{{k}}</p>
           <p class="p2">{{v}} ELA votes</p>
@@ -86,12 +87,35 @@ export default {
     node_detail(){
       if(this.$store.state.node_detail){
         // util.loading(false);
-        console.log(111, this.$store.state.node_detail)
+        // console.log(111, this.$store.state.node_detail)
         return this.$store.state.node_detail;
       }
 
       // util.loading(true);
       return null;
+    },
+    votes_gap(){
+      let rs = null;
+      const detail = this.$store.state.node_detail;
+      const list = this.$store.state.node_list;
+      if(detail && list){
+        // console.log(111, list, detail);
+        // rank 24
+        const s24 = util._.find(list, (item)=>{return item.Rank===24;});
+        if(s24){
+          rs = {};
+          rs['24'] = (detail.Value||0) - (s24.Value || 0);
+          
+        }
+
+        // rank 96
+        const s96 = util._.find(list, (item)=>{return item.Rank===96;});
+        if(s96){
+          rs['96'] = (detail.Value||0) - (s96.Value || 0);
+        }
+      }
+console.log(111, rs);
+      return rs;
     }
   },
   mounted(){
@@ -107,11 +131,16 @@ export default {
     }
   },
   created(){
+
     tmp = new ClipboardJS('.c-copy');
+    
     tmp.on('success', function(e) {
       util.toastInfo('copy successs');
       console.log('copy text : '+ e.text);
       e.clearSelection();
+    });
+    tmp.on('error', function(e) {
+      util.toastInfo('copy error');
     });
   },
   destroyed(){

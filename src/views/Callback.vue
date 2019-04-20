@@ -5,6 +5,7 @@
 import util from '../util';
 export default {
   mounted(){
+    util.toastInfo('return page')
     console.log('callback page');
     util.loading(true);
 
