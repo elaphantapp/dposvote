@@ -49,7 +49,7 @@
         {{$t('RE_VOTE')}}
       </mt-button>
       <mt-button v-if="vote_status==='vote'" @click="clickVoteBtn2()" :disabled="select.n<1" size="large" class="cb" type="primary">
-        {{$t('VOTES')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
+        {{$t('02')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
     </div>
 

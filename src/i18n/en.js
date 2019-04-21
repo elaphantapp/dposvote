@@ -7,6 +7,7 @@ export default {
   FAVORITES : 'Favorites',
   MY_VOTES : 'My Votes',
   NODE_DETAILS : 'Node Details',
+  SEARCH : 'search',
   VOTE : 'Vote',
   VOTING_POWER_USED : 'voting power Used',
   TOTAL : 'Total',
@@ -17,7 +18,7 @@ export default {
   VOTING_RULE : 'Voting Rule',
   rule_msg : {
     '1' : '1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give the same node a maximum of 1 vote;',
-    '2' : 'If the transfer is made after the vote, the previous vote will be invalid and the vote will need to be voted again; you can also check the automatic vote while transferring the transaction;',
+    '2' : 'Your votes will be revoked when you spend your ELA, however, we provide an option for you to anto vote again using you balance when spending your ELA.',
     link : 'https://news.elastos.org/elastos-dpos-supernode-election-process/'
   },
   MORE_DETAIL : 'More Detail',
@@ -29,6 +30,10 @@ export default {
   EST : 'EST',
   PUBLIC_KEY : 'Public Key',
 
+  '01' : 'votes',
+  '02' : 'Vote',
+  '03' : 'Votes %',
+  '04' : 'Votes gap',
 
   country : {
     "1": "United States of America/Canada",

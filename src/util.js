@@ -4,6 +4,7 @@ import moment from 'moment';
 import PubSub from 'pubsub-js';
 import { Toast } from 'mint-ui';
 
+
 const config = {
   appId : '317DD1D2188C459EB24EAEBC81932F6ADB305FF66F073AB1DC767869EF2B1A04273A8A8754652DA3B89E7692BEA99FA3A1E0B2CD767377300AA4A7B0E8C7D00E',
   appName : 'dopsvote.h5.app',

@@ -28,9 +28,11 @@ window.changeLanguage = (lang='en')=>{
   i18n.locale = lang;
 }
 
-new Vue({
+export const vue = new Vue({
   router,
   store,
   i18n,
   render: h => h(App)
 }).$mount('#app')
+
+

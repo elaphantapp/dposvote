@@ -27,7 +27,7 @@
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-97px -141px;"></div>
-          <p class="p1">{{$t('VOTE')}} %</p>
+          <p class="p1">{{$t('03')}}</p>
           <p class="p2">{{node_detail.Percentage}}%</p>
         </div>
         <div class="c-item">
@@ -55,7 +55,7 @@
       <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 0px;" v-if="votes_gap">
         <div class="c-item" v-for="(v, k) in votes_gap" v-bind:key="k">
           <div class="c-icon kg-png" style="background-position:-201px -140px;height:16px;"></div>
-          <p class="p1">Votes gap VS No.{{k}}</p>
+          <p class="p1">{{$t('04')}} VS No.{{k}}</p>
           <p class="p2">{{v}} ELA votes</p>
         </div>
       </div>
@@ -64,7 +64,7 @@
 
     <div class="v-btn">
       <mt-button @click="clickVoteBtn()" size="large" class="cb" type="primary">
-        {{$t('VOTES')}}
+        {{$t('02')}}
       </mt-button>
     </div>
 

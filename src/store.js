@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import util from '@/util';
 import fake from '@/fake';
+import {vue} from './main';
 
 import request from './request';
 
@@ -214,7 +215,7 @@ export default new Vuex.Store({
       })
 
       F.setFavList(list);
-      util.toastInfo('success');
+      util.toastInfo(vue.$t('SUCCESS'));
       
       
     },
@@ -225,7 +226,7 @@ export default new Vuex.Store({
       });
       
       F.setFavList(list);
-      util.toastInfo('success');
+      util.toastInfo(vue.$t('SUCCESS'));
       
     }
   }

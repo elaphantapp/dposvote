@@ -7,8 +7,9 @@ export default {
   FAVORITES : '最爱',
   MY_VOTES : '我的投票',
   NODE_DETAILS : '节点信息',
+  SEARCH : '搜索',
   VOTE : '票',
-  VOTING_POWER_USED : '已用投票权',
+  VOTING_POWER_USED : '投票权 已用',
   TOTAL : '总共',
   RULE : '规则',
   ALL : '全部',
@@ -27,8 +28,12 @@ export default {
   LOCATION : '位置',
   YEAR : '年',
   EST : '预估',
-  PUBLIC_KEY : '公钥',
+  PUBLIC_KEY : '节点公钥',
 
+  '01' : '票数',
+  '02' : '投票',
+  '03' : '票数占比',
+  '04' : '投票差距',
 
 
   country : {
