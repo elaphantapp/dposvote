@@ -11,8 +11,6 @@ const config = {
   appSign : '4109FDAD1EB5D3AD2B02D4BC62822268E0F04FCE0FF3A82D2AF1A6B88787815D920026D209154B3BCEC210B73418613E2358E8EE326F6C8F536AFD7EABAE5C99',
   appDid : 'iiJRtAn6wyHaMSDQPS9Kkft3iiNjH5tTmi',
   appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
-  appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
-  appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : 'https://elaphantapp.github.io/dposvote/#/return_url',
   // callbackUrl : 'http://192.168.1.17:8080/#/return_url',
   // callbackUrl : '',
