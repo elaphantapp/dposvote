@@ -23,16 +23,31 @@
         </div>
       </div>
 
-      <div class="c-list">
-        <VotingListItem
-          v-for="(item, i) in list" v-bind:key="i" 
-          v-bind:status="vote_status"
-          v-bind:clickFn="clickItem"
-          v-bind:favFn="favItem"
-          v-bind:item="item" 
-          v-bind:index="i+1">
-        </VotingListItem>
-      </div>
+      <mt-loadmore :top-method="loadTop" 
+        :autoFill="false" 
+        @top-status-change="handleTopChange"
+        ref="loadmore"
+        topPullText="Refresh"
+        topDropText="Refresh"
+        topLoadingText="Loading..."
+        :top-status.sync="topStatus">
+        <div class="c-list">
+          <VotingListItem
+            v-for="(item, i) in list" v-bind:key="i" 
+            v-bind:status="vote_status"
+            v-bind:clickFn="clickItem"
+            v-bind:favFn="favItem"
+            v-bind:item="item" 
+            v-bind:index="i+1">
+          </VotingListItem>
+        </div>
+        <!-- <div slot="top" class="mint-loadmore-top">
+          <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }">↓</span>
+          <span v-show="topStatus === 'loading'">Loading...</span>
+        </div> -->
+      </mt-loadmore>
+
+      
       
     </div>
 
@@ -63,6 +78,7 @@ export default {
     return {
       value : '',
       vote_status : 'list',
+      topStatus : '',
 
       fn : {
         search_debounce : null
@@ -75,6 +91,17 @@ export default {
     }
   },
   methods : {
+    async loadTop(a, b, c){
+      await this.$store.dispatch('set_node_list', {});
+      util._.delay(()=>{
+        this.$refs.loadmore.onTopLoaded();
+      }, 500);
+      
+    },
+    handleTopChange(status) {
+      this.topStatus = status;
+
+    },
     clickFilter(index){
       
       this.$store.commit('set_node_page_filter', index);
