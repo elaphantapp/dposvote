@@ -170,6 +170,7 @@ export default new Vuex.Store({
     },
 
     set_me_info({commit}){
+      commit('set_me_info', {});
       const data = util.getUserData();
       // data.Data.ELAAddress = 'ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9'
       request.getElaByAddress(data.Data.ELAAddress).then((d)=>{
@@ -180,13 +181,19 @@ export default new Vuex.Store({
         request.getVoteByAddress(data.Data.ELAAddress).then((d)=>{
           util._.each(d.result, (item)=>{
             // console.log(parseFloat(item.Vote_Header.Value))
-            data.vp_used += parseFloat(item.Vote_Header.Value);
+            if(item.Vote_Header.Is_valid && item.Vote_Header.Is_valid === 'YES'){
+              data.vp_used += parseFloat(item.Vote_Header.Value);
+              
+            }
+            
           })
 
+          console.log('my_votes_list', d.result);
           commit('set_my_votes_list', d.result);
           commit('set_my_vote_detail');
         })
 
+        console.log('me_info', data);
         commit('set_me_info', data);
       });
     },

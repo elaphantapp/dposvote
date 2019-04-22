@@ -12,8 +12,6 @@ const config = {
   appDid : 'iiJRtAn6wyHaMSDQPS9Kkft3iiNjH5tTmi',
   appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
   callbackUrl : 'https://elaphantapp.github.io/dposvote/#/return_url',
-  // callbackUrl : 'http://192.168.1.17:8080/#/return_url',
-  // callbackUrl : '',
   random : '998877'
 };
 const _user_data = {
@@ -136,7 +134,8 @@ export default{
   },
 
   getUrlParam(name){
-    const t = location.hash.replace(_user_data.callbackUrl, '').replace(/%09/g, '');
+    const t = location.href.replace(_user_data.callbackUrl, '').replace(/%09/g, '');
+    console.log(111, _user_data.callbackUrl, t);
     const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     const r = decodeURIComponent(t).substr(1).match(reg);
     if (r) return unescape(r[2]);

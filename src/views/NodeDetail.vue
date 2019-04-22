@@ -95,7 +95,10 @@ export default {
       return null;
     },
     votes_gap(){
-      let rs = null;
+      let rs = {
+        '24' : 'NA',
+        '96' : 'NA'
+      };
       const detail = this.$store.state.node_detail;
       const list = this.$store.state.node_list;
       if(detail && list){
@@ -103,7 +106,6 @@ export default {
         // rank 24
         const s24 = util._.find(list, (item)=>{return item.Rank===24;});
         if(s24){
-          rs = {};
           rs['24'] = (detail.Value||0) - (s24.Value || 0);
           
         }
@@ -114,7 +116,7 @@ export default {
           rs['96'] = (detail.Value||0) - (s96.Value || 0);
         }
       }
-console.log(111, rs);
+
       return rs;
     }
   },

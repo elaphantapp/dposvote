@@ -18,13 +18,14 @@ export default {
     if(txid){
       // vote callback
       console.log('callback->txid : '+txid);
+      util.toastInfo(this.$t('SUCCESS'));
       this.$router.replace('/');
     }
     else if(response){
       const queryString = response;
       console.log((queryString).replace(/\n| /g, ''))
       util.setUserData(queryString);
-      this.$store.dispatch('set_me_info', {});
+      // this.$store.dispatch('set_me_info', {});
 
       this.$router.replace('/');
     }
