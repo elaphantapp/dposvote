@@ -95,7 +95,7 @@ export default {
     list(){
       
       return util._.map(this.$store.state.my_votes_list, (item)=>{
-        item.time = util.moment(item.time).format('YYYY-MM-DD hh:mm');
+        item.time = util.moment.unix(item.Vote_Header.Block_Time).format('YYYY-MM-DD hh:mm');
         item.id = item.Vote_Header.Txid;
         item.number = item.Vote_Header.Value;
         item.node = item.Vote_Header.Node_num;
