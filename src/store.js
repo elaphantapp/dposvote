@@ -19,7 +19,7 @@ const F = {
       item.id = item.Producer_public_key || item.Address || item.Nodepublickey;
       item.Percentage = 0; 
       if(total){
-        item.Percentage = Math.fround((item.Votes/total)*100).toFixed(2);
+        item.Percentage = Math.fround(((item.Value || 0)/total)*100).toFixed(2);
       }
 
       const flag = util._.findIndex(fav_list, (l)=>{
