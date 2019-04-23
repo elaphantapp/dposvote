@@ -21,6 +21,8 @@ const F = {
       if(total){
         item.Percentage = Math.fround(((item.Value || 0)/total)*100).toFixed(2);
       }
+      item.EstRewardPerYear = parseFloat(item.EstRewardPerYear).toFixed(2).toString();
+      item.Value = parseFloat(item.Value || 0).toFixed(2);
 
       const flag = util._.findIndex(fav_list, (l)=>{
         return l.Producer_public_key === item.Producer_public_key;
