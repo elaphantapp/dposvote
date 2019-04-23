@@ -14,7 +14,7 @@ const config = {
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : 'https://liyangwood.github.io/dpos_vote/#/return_url',
-  // callbackUrl : 'http://10.247.236.29:8080/#/return_url',
+  // callbackUrl : 'http://192.168.1.104:8080/#/return_url',
   random : '998877'
 };
 const _user_data = {

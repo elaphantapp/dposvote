@@ -28,6 +28,11 @@ window.changeLanguage = (lang='en')=>{
   i18n.locale = lang;
 }
 
+Vue.filter('toF2', (v, xx)=>{
+  const x = v || 0;
+  return ((Math.floor(x*100))/100).toFixed(2) + (xx||'');
+})
+
 export const vue = new Vue({
   router,
   store,

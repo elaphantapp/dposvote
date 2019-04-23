@@ -1,5 +1,7 @@
 <template>
-  <mt-cell :to="'/vote_detail/'+data.id" class="cm-MyVoteBaseList" :title="data.number+'ELA'" is-link :label="data.time">
+  <mt-cell :to="'/vote_detail/'+data.id" class="cm-MyVoteBaseList" 
+    :title="data.number | toF2(' ELA')" 
+    is-link :label="data.time">
     <span class="t1">{{data.node}} nodes</span>
     <span class="t2">{{data.status}}</span>
   </mt-cell>

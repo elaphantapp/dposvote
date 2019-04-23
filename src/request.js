@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 const _axios = axios.create({
   baseURL: 'https://api-wallet-ela-testnet.elastos.org/api/1',
+  // baseURL: 'https://api-wallet-ela.elastos.org/api/1',
   // baseURL: '/api/1',
 
 });
