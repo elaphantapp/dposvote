@@ -8,7 +8,7 @@
       <div v-if="info" class="kg-gap" style="background:#f9f9f9; padding: 12px 15px;">
         <div class="c-rule">
           <p class="t1">{{$t('VOTING_POWER_USED')}}/{{$t('TOTAL')}} (ELA)</p>
-          <p class="t2">{{info.vp_used}}/{{info.ela_total}}</p>
+          <p class="t2">{{info.vp_used | toF2}}/{{info.ela_total | toF2}}</p>
 
           <button class="t3" @click="showPopUp()">
             <i class="fa fa-question-circle-o"></i>
@@ -95,7 +95,8 @@ export default {
     list(){
       
       return util._.map(this.$store.state.my_votes_list, (item)=>{
-        item.time = util.moment.unix(item.Vote_Header.Block_Time).format('YYYY-MM-DD hh:mm');
+        console.log(3, item)
+        item.time = util.moment.unix(item.Vote_Header.Block_time).format('YYYY-MM-DD hh:mm');
         item.id = item.Vote_Header.Txid;
         item.number = item.Vote_Header.Value;
         item.node = item.Vote_Header.Node_num;
