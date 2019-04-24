@@ -5,7 +5,6 @@ const country = {};
 _.each(C, (item)=>{
   _.set(country, item.code, item.zh);
 });
-console.log(22, country)
 export default {
   country,
 
