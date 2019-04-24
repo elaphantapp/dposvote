@@ -128,7 +128,7 @@ export default{
     const tmp = JSON.parse(decodeURIComponent(queryString));
     
     const d = {
-      ...tmp,
+      Data : JSON.parse(tmp.Data),
       PublicKey : tmp.PublicKey,
       Sign : tmp.Sign
     };
