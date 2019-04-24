@@ -39,9 +39,12 @@ export default {
   YEAR : 'year',
   EST : 'EST',
   PUBLIC_KEY : 'Public Key',
+  CANCEL : 'Cancel',
+  CLOSE : 'Close',
 
   '01' : 'votes',
   '02' : 'Vote',
   '03' : 'Votes %',
-  '04' : 'Votes gap'
+  '04' : 'Votes gap',
+  '05' : 'copy successs'
 };

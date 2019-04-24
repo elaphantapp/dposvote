@@ -96,7 +96,7 @@ export default {
       
       return util._.map(this.$store.state.my_votes_list, (item)=>{
         console.log(3, item)
-        item.time = util.moment.unix(item.Vote_Header.Block_time).format('YYYY-MM-DD hh:mm');
+        item.time = util.moment.unix(item.Vote_Header.Block_time).format('YYYY-MM-DD HH:mm');
         item.id = item.Vote_Header.Txid;
         item.number = item.Vote_Header.Value;
         item.node = item.Vote_Header.Node_num;
@@ -107,17 +107,16 @@ export default {
     }
   },
   mounted(){
+    
     util._.delay(()=>{
       const ud = util.getUserData();
+      console.log('user data =>', ud);
       if(ud){
-        this.test = JSON.stringify(ud.Data) + '\n' +navigator.userAgent;
+        this.$store.dispatch('set_me_info', {});
       }
-    }, 5000)
+    }, 1500);
 
-    const ud = util.getUserData();
-    if(ud){
-      this.$store.dispatch('set_me_info', {});
-    }
+    
 
   }
 }

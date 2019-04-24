@@ -28,6 +28,9 @@ const F = {
         return l.Producer_public_key === item.Producer_public_key;
       });
       item.fav = flag !== -1;
+      if(item.fav){
+        item.selected = true;
+      }
 
       return item;
     });
@@ -68,7 +71,7 @@ export default new Vuex.Store({
       let tmp = F.processNodeList(list, state.global.total_vote);
       if(state.node_page_search){
         tmp = util._.filter(tmp, (item)=>{
-          return _.includes(item.Nickname, state.node_page_search);
+          return _.includes(item.Nickname.toLowerCase(), state.node_page_search.toLowerCase());
         });
       }
       if(state.node_page_filter === 2){

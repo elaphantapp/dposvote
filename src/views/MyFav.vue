@@ -51,6 +51,7 @@ export default {
         // util.loading(false);
         const list = util._.map(this.$store.state.my_fav_list, (item)=>{
           item.fav = true;
+          item.selected = true;
           return item;
         });
         return list;

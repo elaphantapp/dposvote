@@ -120,8 +120,9 @@ export default{
     return d;
   },
   setUserData(queryString){
-    // queryString = '%7B%22Data%22%3A%22%7B%5C%22BTCAddress%5C%22%3A%5C%221PncAFvqJ3oxBEvwKZYUDhzsujMbQRhDLM%5C%22%2C%5C%22DID%5C%22%3A%5C%22iUTRuu8Pt9nMEmWVzKwD2DhhyQcPUbjVnp%5C%22%2C%5C%22ELAAddress%5C%22%3A%5C%22ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9%5C%22%2C%5C%22EMail%5C%22%3A%5C%22%5C%22%2C%5C%22ETHAddress%5C%22%3A%5C%220x6001f701d41ac5D0fca3aE9a258982EB9888C37c%5C%22%2C%5C%22Nickname%5C%22%3A%5C%22low%E5%9B%BE%E5%90%90%E4%BA%86%5C%22%2C%5C%22PhoneNumber%5C%22%3A%5C%22%5C%22%2C%5C%22PublicKey%5C%22%3A%5C%22032a3cb74e66879690b6f5bb41e032451bc7abe5ee3b72955f754b25e44dbfce73%5C%22%2C%5C%22RandomNumber%5C%22%3A%5C%22123456%5C%22%7D%22%2C%22PublicKey%22%3A%22032a3cb74e66879690b6f5bb41e032451bc7abe5ee3b72955f754b25e44dbfce73%22%2C%22Sign%22%3A%22aa9dd89cb96a0c10db0b621d6dcf8e0e8b2c6455a754190258513b28cd93c8ff224c3a81748e30a6357181ed111da3ed318bec30815572d2a1f0e7682b06b6d9%22%7D'
+    
     const tmp = JSON.parse(decodeURIComponent(queryString));
+    
     const d = {
       Data : JSON.parse(tmp.Data),
       PublicKey : tmp.PublicKey,
