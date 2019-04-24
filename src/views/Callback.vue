@@ -11,8 +11,8 @@ export default {
 
     const config = util.getConfig();
 
-    const txid = util.getUrlParam('txid');
-    const response = util.getUrlParam('response');
+    const txid = util.getUrlParam('TXID');
+    const response = util.getUrlParam('Data');
     console.log(11, txid, response);
     
     if(txid){
@@ -22,9 +22,9 @@ export default {
       this.$router.replace('/');
     }
     else if(response){
-      const queryString = response;
-      console.log((queryString).replace(/\n| /g, ''))
-      util.setUserData(queryString);
+      // const queryString = response;
+      // console.log((queryString).replace(/\n| /g, ''))
+      util.setUserData();
       // this.$store.dispatch('set_me_info', {});
 
       this.$router.replace('/');

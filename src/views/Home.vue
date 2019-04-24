@@ -89,12 +89,11 @@ export default {
     this.active = this.$store.state.current_tab;
 
     const ud = util.getUserData();
-    console.log('5555', ud);
     if(!ud){
       // request user data;
 
       if(util.isChrome()){
-        const fakeQueryString = '%7B%0A%20%20%22PublicKey%22%20:%20%2203f27136e4c545e8021bd2ab86dda46143734df386355d4df921fe74c3a4a22711%22,%0A%20%20%22Data%22%20:%20%22%7B%5Cn%20%20%5C%22RandomNumber%5C%22%20:%20%5C%22998877%5C%22,%5Cn%20%20%5C%22ELAAddress%5C%22%20:%20%5C%22ESV4kMRAiKpLMWMXcqAysFwPhQ3aSzQTzh%5C%22%5Cn%7D%22,%0A%20%20%22Sign%22%20:%20%227A503D093A8D37C014D61A151CA8AC51A9F1EE1EE8FCCDD24E1B57E43751687CFF555C2AD1163E04B4402135157C2E6D69BE901BBCBF5344FD473F541899D64E%22%0A%7D';
+        const fakeQueryString = '#/return_url?Data=%7B%0A%20%20%22PublicKey%22%20:%20%22iVSy1zyLT3YXmthazKdor1o2hxRwoPCVM6%22,%0A%20%20%22RandomNumber%22%20:%20%22998877%22,%0A%20%20%22ELAAddress%22%20:%20%22EM52ZXxSyDKZ5jApdY1brMjUBYcbMAwXRE%22,%0A%20%20%22DID%22%20:%20%22iVSy1zyLT3YXmthazKdor1o2hxRwoPCVM6%22%0A%7D&Sign=8DE3725E2C06A21805ACE166A72F51BEC507023F961FE7FC00355DADB247462EA4739EE12BD0272DE23F8D6846DB31A164A825B7B51B253775B6F293F13C4097';
         util.setUserData(fakeQueryString);
       
         this.$store.dispatch('set_me_info', {});

@@ -22,6 +22,15 @@ const isChrome = ()=>{
   return ua.indexOf('chrome') !== -1 && ua.indexOf('android') === -1;
 }
 
+const getUrlParam = (name, url)=>{
+  url = url || location.hash;
+  const t = url.replace('#/return_url', '').replace(/%09/g, '');
+  const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  const r = decodeURIComponent(t).substr(1).match(reg);
+  if (r) return unescape(r[2]);
+  return null;
+}
+
 const _cache = {};
 const rc = {
   set(key, rs){
@@ -113,34 +122,31 @@ export default{
   getUserData(){
     // const d = ls.get('user-data');
     const d = _user_data;
-    if(!d || !d['PublicKey']){
+    if(!d || !d['Sign']){
       return null;
     }
 
     return d;
   },
   setUserData(queryString){
-    
-    const tmp = JSON.parse(decodeURIComponent(queryString));
+    queryString = queryString || location.hash;
+
+    const Data = getUrlParam('Data', queryString);
+ 
+    const tmp = JSON.parse(decodeURIComponent(Data));
+    tmp.Sign = getUrlParam('Sign', queryString);
     
     const d = {
-      Data : JSON.parse(tmp.Data),
+      Data : tmp,
       PublicKey : tmp.PublicKey,
       Sign : tmp.Sign
     };
     _.extend(_user_data, d);
-
+    console.log(2, _user_data); 
     // ls.set('user-data', _user_data);
   },
 
-  getUrlParam(name){
-    const t = location.href.replace(_user_data.callbackUrl, '').replace(/%09/g, '');
-    console.log(111, _user_data.callbackUrl, t);
-    const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    const r = decodeURIComponent(t).substr(1).match(reg);
-    if (r) return unescape(r[2]);
-    return null;
-  },
+  getUrlParam,
 
 
   buildRequestUserDataUrl(){
