@@ -4,7 +4,7 @@
 
     <div class="kg-body kg-tab">
       <mt-search v-model="value" 
-        cancel-text="Cancel"
+        :cancel-text="$t('CANCEL')"
         :placeholder="$t('SEARCH')"
         style="height:auto;" />
 
@@ -121,10 +121,12 @@ export default {
     favItem(item){
       if(item.fav){
         this.$store.dispatch('removeFavItem', item);
+        item.selected = false;
         this.$store.dispatch('set_node_list', {});
       }
       else{
         this.$store.dispatch('addFavItem', item);
+        item.selected = true;
         this.$store.dispatch('set_node_list', {});
       }
     },

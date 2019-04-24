@@ -75,6 +75,7 @@
 <script>
 import util from '@/util';
 import ClipboardJS from 'clipboard';
+import {vue} from '../main';
 
 let tmp = null;
 export default {
@@ -137,7 +138,7 @@ export default {
     tmp = new ClipboardJS('.c-copy');
     
     tmp.on('success', function(e) {
-      util.toastInfo('copy successs');
+      util.toastInfo(vue.$t('05'));
       console.log('copy text : '+ e.text);
       e.clearSelection();
     });
