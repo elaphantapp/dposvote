@@ -107,17 +107,16 @@ export default {
     }
   },
   mounted(){
+    
     util._.delay(()=>{
       const ud = util.getUserData();
+      console.log('user data =>', ud);
       if(ud){
-        this.test = JSON.stringify(ud.Data) + '\n' +navigator.userAgent;
+        this.$store.dispatch('set_me_info', {});
       }
-    }, 5000)
+    }, 1500);
 
-    const ud = util.getUserData();
-    if(ud){
-      this.$store.dispatch('set_me_info', {});
-    }
+    
 
   }
 }
