@@ -14,12 +14,14 @@ const config = {
   appDidPrivateKey: '462B93F275E0458F838BFAC195EE32BBD21D71DE794938572A9F9F5FF7AE80D6',
   appDidMnemonic: 'quote milk ring ketchup refuse chief float please water march car tone',
   callbackUrl : 'https://liyangwood.github.io/dpos_vote/#/return_url',
-  // callbackUrl : 'http://192.168.1.107:8080/#/return_url',
+  // callbackUrl : 'http://192.168.1.17:8080/#/return_url',
   random : '998877'
 };
 const _user_data = {
   ...config
 };
+
+
 
 const isChrome = ()=>{
   const ua = navigator.userAgent.toLowerCase()
@@ -85,6 +87,9 @@ export default{
         text: 'Loading...',
         spinnerType: 'fading-circle'
       });
+      _.delay(()=>{
+        Indicator.close();
+      }, 2000);
     }
     else{
       Indicator.close();
