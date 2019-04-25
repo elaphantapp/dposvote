@@ -17,6 +17,8 @@ const _user_data = {
   ...config
 };
 
+
+
 const isChrome = ()=>{
   const ua = navigator.userAgent.toLowerCase()
   return ua.indexOf('chrome') !== -1 && ua.indexOf('android') === -1;
@@ -81,6 +83,9 @@ export default{
         text: 'Loading...',
         spinnerType: 'fading-circle'
       });
+      _.delay(()=>{
+        Indicator.close();
+      }, 2000);
     }
     else{
       Indicator.close();
