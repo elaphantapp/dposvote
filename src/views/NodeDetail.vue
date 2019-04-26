@@ -56,7 +56,7 @@
         <div class="c-item" v-for="(v, k) in votes_gap" v-bind:key="k">
           <div class="c-icon kg-png" style="background-position:-201px -140px;height:16px;"></div>
           <p class="p1">{{$t('04')}} VS No.{{k}}</p>
-          <p class="p2">{{v}} ELA votes</p>
+          <p class="p2">{{v}} ELA {{$t('01')}}</p>
         </div>
       </div>
       
