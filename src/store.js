@@ -107,6 +107,10 @@ export default new Vuex.Store({
       const list = state.my_votes_list;
       util._.each(list, (item)=>{
         item.list = F.processNodeList(item.Vote_Body, state.global.total_vote);
+        item.list = util._.map(item.list, (item)=>{
+          item.selected = true;
+          return item;
+        });
         map[item.Vote_Header.Txid] = item;
 
       });
@@ -177,12 +181,12 @@ export default new Vuex.Store({
     set_me_info({commit}){
       commit('set_me_info', {});
       const data = util.getUserData();
+      data.vp_used = 0;
       // data.Data.ELAAddress = 'ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9'
       request.getElaByAddress(data.Data.ELAAddress).then((d)=>{
         
         data.ela_total = d.result;
-        data.vp_used = 0;
-
+        
         request.getVoteByAddress(data.Data.ELAAddress).then((d)=>{
           util._.each(d.result, (item)=>{
             // console.log(parseFloat(item.Vote_Header.Value))

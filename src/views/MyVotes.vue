@@ -18,10 +18,10 @@
       </div>
       
       
-      <mt-navbar style="margin-top:12px;" v-model="selected">
+      <!-- <mt-navbar style="margin-top:12px;" v-model="selected">
         <mt-tab-item id="success">{{$t('SUCCESS')}}</mt-tab-item>
         <mt-tab-item id="failure">{{$t('FAILURE')}}</mt-tab-item>
-      </mt-navbar>
+      </mt-navbar> -->
       <mt-tab-container v-model="selected" style="">
         <mt-tab-container-item id="success">
           <MyVoteBaseList v-for="(item, i) in list" v-bind:key="i" v-bind:data="item" />
