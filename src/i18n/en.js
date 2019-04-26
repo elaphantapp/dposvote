@@ -11,7 +11,7 @@ export default {
 
   VOTING : 'Voting',
   RANK : 'Rank',
-  FAV : 'Fav',
+  FAV : 'Favorites',
   LATEST : 'Latest',
   NODES : 'Nodes',
   FAVORITES : 'Favorites',
@@ -25,13 +25,13 @@ export default {
   ALL : 'All',
   SUCCESS : 'Success',
   FAILURE : 'Failure',
-  VOTING_RULE : 'Voting Rule',
+  VOTING_RULE : 'Voting Rules',
   rule_msg : {
-    '1' : '1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give the same node a maximum of 1 vote;',
-    '2' : 'Your votes will be revoked when you spend your ELA, however, we provide an option for you to anto vote again using you balance when spending your ELA.',
+    '1' : '1 ELA may be used to vote for a maximum of 36 different nodes and 1 ELA may only give each node a maximum of 1 vote;',
+    '2' : 'When a user spends ELA, the votes corresponding to the spent ELA are revoked, However, an option is available that allows the user to vote again with its new balance after spending ELA.',
     link : 'https://news.elastos.org/elastos-dpos-supernode-election-process/'
   },
-  MORE_DETAIL : 'More Detail',
+  MORE_DETAIL : 'Further Details Available at',
   RE_VOTE : 'Re-Vote',
   VOTES : 'Votes',
   STATUS : 'Status',
@@ -46,5 +46,10 @@ export default {
   '02' : 'Vote',
   '03' : 'Votes %',
   '04' : 'Votes gap',
-  '05' : 'copy successs'
+  '05' : 'copy successs',
+
+
+  Activate: 'Active',
+  Inactivate : 'Inactive',
+  Pengding : 'Pending'
 };

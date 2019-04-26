@@ -11,7 +11,7 @@
       <div class="c-top">
         <div class="c1">
           <p class="p1">{{$t('VOTE')}}: (ELA)</p>
-          <p class="p2">{{data.number}}</p>
+          <p class="p2">{{data.number | toF2}}</p>
         </div>
         <div class="c1">
           <p class="p1">{{$t('NODES')}}</p>
@@ -48,7 +48,7 @@
       <mt-button v-if="vote_status==='list'" @click="clickVoteBtn1()" size="large" class="cb" type="primary">
         {{$t('RE_VOTE')}}
       </mt-button>
-      <mt-button v-if="vote_status==='vote'" @click="clickVoteBtn2()" :disabled="select.n<1" size="large" class="cb" type="primary">
+      <mt-button v-if="vote_status==='vote'" @click="clickVoteBtn2()" :disabled="select.n<1 || select.n>36" size="large" class="cb" type="primary">
         {{$t('02')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
     </div>

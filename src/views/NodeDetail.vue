@@ -18,7 +18,7 @@
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-45px -141px;"></div>
           <p class="p1">{{$t('STATUS')}}</p>
-          <p class="p2">{{node_detail.State}}</p>
+          <p class="p2">{{$t(node_detail.State)}}</p>
         </div>
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-70px -141px;"></div>
@@ -62,11 +62,11 @@
       
     </div>
 
-    <div class="v-btn">
+    <!-- <div class="v-btn">
       <mt-button @click="clickVoteBtn()" size="large" class="cb" type="primary">
         {{$t('02')}}
       </mt-button>
-    </div>
+    </div> -->
 
     
 

@@ -22,7 +22,7 @@
     </div>
 
     <div class="v-btn" v-if="vote_status==='vote'">
-      <mt-button @click="clickVoteBtn()" :disabled="select.n<1" size="large" class="cb" type="primary">
+      <mt-button @click="clickVoteBtn()" :disabled="select.n<1 || select.n>36" size="large" class="cb" type="primary">
         {{$t('02')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
     </div>
