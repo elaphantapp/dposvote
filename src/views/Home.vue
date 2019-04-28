@@ -6,9 +6,9 @@
       <mt-tab-container-item id="tab1">
         <Nodes />
       </mt-tab-container-item>
-      <mt-tab-container-item id="tab2">
+       <!-- <mt-tab-container-item id="tab2">
         <MyFav />
-      </mt-tab-container-item>
+      </mt-tab-container-item> -->
       <mt-tab-container-item id="tab3">
         <MyVotes />
       </mt-tab-container-item>
@@ -19,10 +19,10 @@
         <i class="iconfont icon-nodes"></i>
         <p>{{$t('NODES')}}</p>
       </mt-tab-item>
-      <mt-tab-item id="tab2">
+       <!-- <mt-tab-item id="tab2">
         <i class="iconfont icon-fav"></i>
         <p>{{$t('FAVORITES')}}</p> 
-      </mt-tab-item>
+      </mt-tab-item> -->  
       <mt-tab-item id="tab3">
         <i class="iconfont icon-vote"></i>
         <p>{{$t('MY_VOTES')}}</p> 
