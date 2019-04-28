@@ -49,7 +49,7 @@ export default {
     '05': 'copy success',
     '06': 'Active Node Cutoff(NO.',
     '07': 'Standby Node Cutoff(NO.',
-
+    '08': '',
 
     Activate: 'Active',
     Inactivate: 'Inactive',

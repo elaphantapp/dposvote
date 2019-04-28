@@ -202,7 +202,7 @@ export default new Vuex.Store({
                     })
 
                     var list = util._.sortBy(d.result, function(item) {
-                        return -item.item;
+                        return -item.time;
                     })
 
                     console.log('my_votes_list', list);
