@@ -96,7 +96,7 @@ export default {
       }
     },
     processSelectNumber(){
-      const t = util._.size(this.list);
+      const t = 36; //util._.size(this.list);
       const n = util._.size(util._.filter(this.list, (item)=>{
         return item.selected;
       }));

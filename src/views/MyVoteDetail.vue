@@ -150,7 +150,7 @@ export default {
       
     },
     processSelectNumber(){
-      const t = util._.size(this.data.list);
+      const t = 36; //util._.size(this.data.list);
       const n = util._.size(util._.filter(this.data.list, (item)=>{
         return item.selected;
       }));

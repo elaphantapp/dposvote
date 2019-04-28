@@ -78,6 +78,10 @@ export default new Vuex.Store({
                 state.node_list = util._.filter(tmp, (item) => {
                     return item.fav;
                 })
+            } else if (state.node_page_filter === 3) {
+                state.node_list = util._.sortBy(tmp, function(item) {
+                    return -item.Registerheight;
+                })
             } else if (state.node_page_filter === 4) {
                 state.node_list = tmp.sort((a, b) => {
                     return a.Nickname.charCodeAt(0) - b.Nickname.charCodeAt(0)
