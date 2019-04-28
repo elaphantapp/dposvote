@@ -16,7 +16,7 @@
 
     <div class="c-bdy">
       <p class="p p1">{{item.Nickname}}</p>
-      <p class="p p2">{{index}}</p>
+      <p class="p p2">{{item.Rank}}</p>
       <i class="kg-png p p3"></i>
       <i class="kg-png p p4"></i>
       <p class="p p5">{{$t('country')[item.Location]}}</p>

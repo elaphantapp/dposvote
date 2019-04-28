@@ -55,8 +55,8 @@
       <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 0px;" v-if="votes_gap">
         <div class="c-item" v-for="(v, k) in votes_gap" v-bind:key="k">
           <div class="c-icon kg-png" style="background-position:-201px -140px;height:16px;"></div>
-          <p class="p1" v-if="k==24">{{$t('06')}}{{k}})</p>
-           <p class="p1" v-if="k==96">{{$t('07')}}{{k}})</p>
+          <p class="p1" v-if="k==24">{{$t('06')}}{{k}}{{$t('08')}})</p>
+           <p class="p1" v-if="k==96">{{$t('07')}}{{k}}{{$t('08')}})</p>
           <p class="p2">{{v}} {{$t('01')}}</p>
         </div>
       </div>
