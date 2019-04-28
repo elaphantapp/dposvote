@@ -201,8 +201,12 @@ export default new Vuex.Store({
 
                     })
 
-                    console.log('my_votes_list', d.result);
-                    commit('set_my_votes_list', d.result);
+                    var list = util._.sortBy(d.result, function(item) {
+                        return -item.item;
+                    })
+
+                    console.log('my_votes_list', list);
+                    commit('set_my_votes_list', list);
                     commit('set_my_vote_detail');
                 })
 
