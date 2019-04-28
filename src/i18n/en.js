@@ -47,8 +47,8 @@ export default {
     '03': 'Votes %',
     '04': 'Votes gap',
     '05': 'copy success',
-    '06': 'Active Node Cutoff',
-    '07': 'Standby Node Cutoff',
+    '06': 'Active Node Cutoff(NO.',
+    '07': 'Standby Node Cutoff(NO.',
 
 
     Activate: 'Active',
