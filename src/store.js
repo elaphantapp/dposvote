@@ -202,7 +202,7 @@ export default new Vuex.Store({
                     })
 
                     var list = util._.sortBy(d.result, function(item) {
-                        return -item.time;
+                        return -item.Vote_Header.Block_time;
                     })
 
                     console.log('my_votes_list', list);
