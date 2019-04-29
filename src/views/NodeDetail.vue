@@ -152,6 +152,10 @@ export default {
       tmp.destroy();
       tmp = null;
     }
+  },
+  beforeRouteLeave(to, from, next) {  
+     to.meta.keepAlive = true;
+     next();
   }
 }
 </script>
