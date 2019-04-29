@@ -29,7 +29,7 @@ window.changeLanguage = (lang = 'en') => {
 }
 
 Vue.filter('toF2', (v, xx) => {
-    const x = v || 0;
+    var x = v || 0.00;
     //return ((Math.floor(x*100))/100).toFixed(2) + (xx||'');
     return x.toFixed(2);
 })
