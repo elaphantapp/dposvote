@@ -19,25 +19,24 @@ Vue.config.productionTip = false;
 const dl = navigator.language === 'zh-CN' ? 'zh' : 'en';
 
 const i18n = new VueI18n({
-  locale: dl,
-  messages : language
+    locale: dl,
+    messages: language
 })
 
 // temp change language method
-window.changeLanguage = (lang='en')=>{
-  i18n.locale = lang;
+window.changeLanguage = (lang = 'en') => {
+    i18n.locale = lang;
 }
 
-Vue.filter('toF2', (v, xx)=>{
-  const x = v || 0;
-  return ((Math.floor(x*100))/100).toFixed(2) + (xx||'');
+Vue.filter('toF2', (v, xx) => {
+    var x = v || 0.00;
+    //return ((Math.floor(x*100))/100).toFixed(2) + (xx||'');
+    return x.toFixed(2);
 })
 
 export const vue = new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App)
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }).$mount('#app')
-
-
