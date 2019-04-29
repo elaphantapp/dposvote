@@ -11,35 +11,34 @@ Vue.use(Router)
 
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        // keepAlive: true
-      }
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: Home,
+            meta: {
+                keepAlive: true
+            }
 
-    },
-    {
-      path: '/node_detail/:id',
-      name : 'node_detail',
-      component : NodeDetail
-    },
-    {
-      path: '/my_node_detail',
-      name : 'my_node_detail',
-      component : NodeDetail
-    },
-    {
-      path : '/vote_detail/:id',
-      name : 'vote_detail',
-      component : MyVoteDetail
-    },
-    {
-      path : '/return_url',
-      name : 'return_url',
-      component : Callback
-    }
-  ]
+        },
+        {
+            path: '/node_detail/:id',
+            name: 'node_detail',
+            component: NodeDetail
+        },
+        {
+            path: '/my_node_detail',
+            name: 'my_node_detail',
+            component: NodeDetail
+        },
+        {
+            path: '/vote_detail/:id',
+            name: 'vote_detail',
+            component: MyVoteDetail
+        },
+        {
+            path: '/return_url',
+            name: 'return_url',
+            component: Callback
+        }
+    ]
 })
