@@ -201,7 +201,7 @@ export default new Vuex.Store({
                     util._.each(list, (item) => {
                         // console.log(parseFloat(item.Vote_Header.Value))
                         if (item.Vote_Header.Is_valid && item.Vote_Header.Is_valid === 'YES') {
-                            data.vp_used = parseFloat(item.Vote_Header.Value).toFixed(2);
+                            data.vp_used = parseFloat(item.Vote_Header.Value);
                             return;
                         }
                     })
