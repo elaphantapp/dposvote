@@ -245,6 +245,7 @@ export default {
 
   .c-list{
     margin-top: 12px;
+    margin-bottom: 35px;
   }
 
   .x-btn{
@@ -264,7 +265,7 @@ export default {
   }
   .v-btn{
     position: absolute;
-    bottom: -10px;;
+    bottom: -33px;;
     
     padding: 0 15px;
     width: 100%;

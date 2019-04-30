@@ -17,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background: rgb(242, 242, 249);
+  -webkit-overflow-scrolling: touch;
 }
 
 </style>

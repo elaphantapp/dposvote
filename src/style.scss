@@ -1,84 +1,88 @@
-@import './font.scss'; 
-
+@import './font.scss';
 
 /* variables definition */
+
 $blue_color: #5f6fed;
 $light_color: #edeef5;
-
-
-*{
-  font-family: 'bio-sans', 'Source Sans Pro', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  
-  a{
-    text-decoration: none;
-  }
-}
-.kg-png{
-  background-size: 300px 300px;
+* {
+    font-family: 'bio-sans', 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    a {
+        text-decoration: none;
+    }
 }
 
-.kg-page{
-  background: rgb(242, 242, 249);
+.kg-png {
+    background-size: 300px 300px;
 }
-.kg-body{
-  height: calc(100vh);
-  overflow-x: hidden;
-  overflow-y: auto;
 
-  &.kg-tab{
-    height: calc(100vh - 55px);
-  }
+.kg-page {
+    background: rgb(242, 242, 249);
 }
-.kg-gap{
-  padding: 0 15px;
+
+.kg-body {
+    height: calc(100vh);
+    overflow-x: hidden;
+    overflow-y: auto;
+    &.kg-tab {
+        height: calc(100vh - 55px);
+    }
 }
-.kg-toast{
-  .fa{
-    font-size: 42px;
-  }
+
+.kg-gap {
+    padding: 0 15px;
 }
+
+.kg-toast {
+    .fa {
+        font-size: 42px;
+    }
+}
+
 
 /* override mint style */
-.mint-navbar .mint-tab-item.is-selected{
-  color: $blue_color;
-  border-color: $blue_color;
-  margin-bottom: 0;
-}
-.mint-header{
-  background-color: transparent;
-  height: 52px;
 
-  .mint-header-title{
-    color: #000;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 52px;
-  }
-
-  .mint-button{
-    color: #333;
-    font-size: 18px;
-  }
-}
-.mint-search{
-  .mint-searchbar{
-    background-color: transparent;
-  }
-  .mintui-search{
-    position: relative;
-    top: 2px;
-  }
-  .mint-searchbar-core{
-    margin-left: 5px;
-  }
-  .mint-searchbar-cancel{
-    font-size: 14px;
+.mint-navbar .mint-tab-item.is-selected {
     color: $blue_color;
-  }
+    border-color: $blue_color;
+    margin-bottom: 0;
 }
-.mint-tab-container{
-  overflow: visible;
+
+.mint-header {
+    background-color: transparent;
+    height: 52px;
+    .mint-header-title {
+        color: #000;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 52px;
+    }
+    .mint-button {
+        color: #333;
+        font-size: 18px;
+    }
+}
+
+.mint-search {
+    .mint-searchbar {
+        background-color: transparent;
+    }
+    .mintui-search {
+        position: relative;
+        top: 2px;
+    }
+    .mint-searchbar-core {
+        margin-left: 5px;
+    }
+    .mint-searchbar-cancel {
+        font-size: 14px;
+        color: $blue_color;
+    }
+}
+
+.mint-tab-container {
+    overflow: visible;
+    margin-bottom: 20px;
 }
