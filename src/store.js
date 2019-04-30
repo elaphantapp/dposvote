@@ -186,7 +186,7 @@ export default new Vuex.Store({
             commit('set_me_info', {});
             const data = util.getUserData();
             data.vp_used = 0;
-            // data.Data.ELAAddress = 'ENaaqePNBtrZsNbs9uc35CPqTbvn8oaYL9'
+            //data.Data.ELAAddress = 'EdyqqiJcdkTDtfkvxVbTuNXGMdB3FEcpXA';
             request.getElaByAddress(data.Data.ELAAddress).then((d) => {
 
                 data.ela_total = d.result;

@@ -245,6 +245,7 @@ export default {
 
   .c-list{
     margin-top: 12px;
+    margin-bottom: 35px;
   }
 
   .x-btn{
