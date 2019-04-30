@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import util from '@/util';
-import fake from '@/fake';
+//import fake from '@/fake';
 import { vue } from './main';
 
 import request from './request';
@@ -71,7 +71,7 @@ export default new Vuex.Store({
             let tmp = F.processNodeList(list, state.global.total_vote);
             if (state.node_page_search) {
                 tmp = util._.filter(tmp, (item) => {
-                    return _.includes(item.Nickname.toLowerCase(), state.node_page_search.toLowerCase());
+                    return util._.includes(item.Nickname.toLowerCase(), state.node_page_search.toLowerCase());
                 });
             }
             if (state.node_page_filter === 2) {
@@ -90,7 +90,7 @@ export default new Vuex.Store({
                 state.node_list = tmp;
             }
 
-            console.log('node_list', state.node_page_filter, state.node_list)
+            //console.log('node_list', state.node_page_filter, state.node_list)
         },
         set_current_node(state, node) {
             state.current_node = node;
@@ -141,7 +141,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        set_node_list({ commit, state }, param) {
+        set_node_list({ commit }) {
             const cache_list = util.rc.get('node_list');
             if (cache_list) {
                 commit('set_node_list', cache_list);
@@ -151,21 +151,21 @@ export default new Vuex.Store({
             request.getCurrentBlockHeight().then((d) => {
                 const height = d.result;
                 request.getTotalVotes(height).then((d) => {
-                    console.log(2, d);
+                    //console.log(2, d);
                     commit('set_global', {
                         total_vote: d.result
                     });
                     request.getNodeList(height).then((d) => {
                         var nodelist = util.handleNodeList(d.result);
-                        console.log(JSON.stringify(nodelist));
+                        //console.log(JSON.stringify(nodelist));
                         util.rc.set('node_list', util._.clone(nodelist));
-                        console.log(1, d)
+                        //console.log(1, d)
                         const list = nodelist;
                         commit('set_node_list', list);
                     })
                 })
 
-            })
+            });
 
         },
 
@@ -206,18 +206,18 @@ export default new Vuex.Store({
                         }
                     })
 
-                    console.log('my_votes_list', list);
+                    //console.log('my_votes_list', list);
                     commit('set_my_votes_list', list);
                     commit('set_my_vote_detail');
                 })
 
-                console.log('me_info', data);
+                //console.log('me_info', data);
                 commit('set_me_info', data);
             });
         },
 
 
-        set_my_fav_list({ commit }, param) {
+        set_my_fav_list({ commit }) {
             const list = F.getFavList();
             commit('set_my_fav_list', list);
         },
