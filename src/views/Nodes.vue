@@ -265,7 +265,7 @@ export default {
   }
   .v-btn{
     position: absolute;
-    bottom: -10px;;
+    bottom: -33px;;
     
     padding: 0 15px;
     width: 100%;
