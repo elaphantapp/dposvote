@@ -24,6 +24,16 @@ const isChrome = () => {
     return ua.indexOf('chrome') !== -1 && ua.indexOf('android') === -1;
 }
 
+const isSafari = () => {
+
+    return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+}
+
+const isIos = () => {
+    const ua = navigator.userAgent.toLowerCase();
+    return !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+}
+
 const getUrlParam = (name, url) => {
     url = url || location.hash;
     const t = url.replace('#/return_url', '').replace(/%09/g, '');
@@ -77,6 +87,8 @@ export default {
     rc,
     ls,
     isChrome,
+    isIos,
+    isSafari,
     loading(flag = false) {
         if (flag) {
             Indicator.open({
