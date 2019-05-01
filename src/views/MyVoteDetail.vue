@@ -25,7 +25,7 @@
         <span class="s2">{{data.status}}</span>
       </div>
 
-      <div class="c-list" style="margin-top: 8px; padding-bottom: 60px;">
+      <div class="c-list" :class="{ 'c-list1': isIos }" style="margin-top: 8px; padding-bottom: 60px;">
         <VotingListItem 
           v-for="(item, i) in data.list" v-bind:key="i" 
           v-bind:status="vote_status"
@@ -44,7 +44,7 @@
       <div class="kg-png" slot="icon"></div>
     </div> -->
 
-    <div class="v-btn">
+    <div class="v-btn" :class="{ 'v-btn1': isIos }">
       <mt-button v-if="vote_status==='list'" @click="clickVoteBtn1()" size="large" class="cb" type="primary">
         {{$t('RE_VOTE')}}
       </mt-button>
@@ -68,6 +68,7 @@ export default {
 
   data(){
     return {
+      isIos:false,  
       vote_status : 'list',
       select : {
         n : 0,
@@ -167,6 +168,15 @@ export default {
         this.processSelectNumber();
       }
     },
+  },
+  mounted(){
+    
+    if(util.isSafari() || util.isIos()){
+       this.isIos = true;
+    }else{
+       this.isIos =false;  
+    }
+    
   }
 }
 </script>
@@ -251,7 +261,7 @@ export default {
 
   .v-btn{
     position: absolute;
-    bottom: 1px;
+    bottom: 20px;
     
     padding: 0 15px;
     width: 100%;
@@ -259,6 +269,29 @@ export default {
       background-color: $blue_color;
     }
   }
+
+  .v-btn1{
+    position: absolute;
+    bottom: 5px;
+    
+    padding: 0 15px;
+    width: 100%;
+    .cb{
+      background-color: $blue_color;
+    }
+  }
+
+  .c-list{
+     
+      margin-top: 8px; 
+      padding-bottom: 65px;
+  }
+
+   .c-list1{
+      margin-top: 8px; 
+      padding-bottom: 60px;
+  }
+
 }
 </style>
 

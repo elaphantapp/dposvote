@@ -22,8 +22,8 @@
         <mt-tab-item id="success">{{$t('SUCCESS')}}</mt-tab-item>
         <mt-tab-item id="failure">{{$t('FAILURE')}}</mt-tab-item>
       </mt-navbar> -->
-      <mt-tab-container v-model="selected" style="">
-        <mt-tab-container-item id="success">
+      <mt-tab-container v-model="selected" class="c-list" :class="{ 'c-list1': isIos }">
+        <mt-tab-container-item id="success" >
           <MyVoteBaseList v-for="(item, i) in list" v-bind:key="i" v-bind:data="item" />
         </mt-tab-container-item>
         <mt-tab-container-item id="failure">
@@ -72,6 +72,7 @@ export default {
   },
   data(){
     return {
+      isIos:false,  
       popupVisible : false,
       selected: 'success',
       test : ''
@@ -107,7 +108,11 @@ export default {
     }
   },
   mounted(){
-    
+       if(util.isSafari() || util.isIos()){
+       this.isIos = true;
+    }else{
+       this.isIos = false;  
+    }
     util._.delay(()=>{
       const ud = util.getUserData();
       console.log('user data =>', ud);
@@ -203,6 +208,16 @@ export default {
   }
   .mint-navbar{
     background-color: transparent;
+  }
+
+  .c-list{
+    margin-top: 12px;
+    padding-bottom: 15px;
+  }
+
+  .c-list1{
+    margin-top: 12px;
+    padding-bottom: 95px;
   }
 
 }

@@ -31,7 +31,7 @@
         topDropText="Refresh"
         topLoadingText="Loading..."
         :top-status.sync="topStatus">
-        <div class="c-list">
+        <div class="c-list" :class="{ 'c-list1': isIos }">
           <VotingListItem
             v-for="(item, i) in list" v-bind:key="i" 
             v-bind:status="vote_status"
@@ -55,7 +55,7 @@
       <div class="kg-png" slot="icon"></div>
     </div>
 
-    <div class="v-btn" v-if="vote_status==='vote'">
+    <div class="v-btn" :class="{ 'v-btn1': isIos }" v-if="vote_status==='vote'">
       <mt-button @click="clickVoteBtn()" :disabled="select.n<1 || select.n>36" size="large" class="cb" type="primary">
         {{$t('02')}} <span style="font-size: 12px;">{{`(${select.n}/${select.t})`}}</span>
       </mt-button>
@@ -76,6 +76,7 @@ export default {
   },
   data(){
     return {
+      isIos:false,
       value : '',
       vote_status : 'list',
       topStatus : '',
@@ -208,6 +209,11 @@ export default {
 
   mounted(){
     
+    if(util.isSafari() || util.isIos()){
+       this.isIos = true;
+    }else{
+       this.isIos =false;  
+    }
     
   }
 }
@@ -243,9 +249,14 @@ export default {
     }
   }
 
-  .c-list{
+   .c-list{
     margin-top: 12px;
-    margin-bottom: 35px;
+    padding-bottom: 40px;
+  }
+
+  .c-list1{
+    margin-top: 12px;
+    padding-bottom: 95px;
   }
 
   .x-btn{
@@ -265,7 +276,7 @@ export default {
   }
   .v-btn{
     position: absolute;
-    bottom: -33px;;
+    bottom: 0px;
     
     padding: 0 15px;
     width: 100%;
@@ -273,6 +284,18 @@ export default {
       background-color: $blue_color;
     }
   }
+
+  .v-btn1{
+    position: absolute;
+    bottom: 20px;
+    
+    padding: 0 15px;
+    width: 100%;
+    .cb{
+      background-color: $blue_color;
+    }
+  }
+
   .mint-search-list{
     display: none;
   }
