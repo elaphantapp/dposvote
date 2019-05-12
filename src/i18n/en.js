@@ -50,6 +50,7 @@ export default {
     '06': 'Active Node Cutoff(NO.',
     '07': 'Standby Node Cutoff(NO.',
     '08': '',
+    '09': 'Revoke',
 
     Activate: 'Active',
     Inactivate: 'Inactive',

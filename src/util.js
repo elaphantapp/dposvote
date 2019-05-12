@@ -197,6 +197,23 @@ export default {
         return url;
     },
 
+
+    buildRevokeVoteSchema() {
+        const d = _user_data;
+
+
+
+        const rt = encodeURIComponent(d.callbackUrl);
+        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=""`;
+
+
+
+        console.log('vote schema => ' + url);
+        location.href = url;
+
+        return url;
+    },
+
     handleNodeList(nodeList) {
         var arr = [];
         for (var index = 0; index < nodeList.length; index++) {
