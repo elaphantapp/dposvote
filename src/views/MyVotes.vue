@@ -9,7 +9,9 @@
         <div class="c-rule">
           <p class="t1">{{$t('VOTING_POWER_USED')}}/{{$t('TOTAL')}} (ELA)</p>
           <p class="t2">{{info.vp_used | toF2}}/{{info.ela_total | toF2}}</p>
-
+            <button class="t4" @click="revoke()">
+            {{$t('09')}}
+          </button>
           <button class="t3" @click="showPopUp()">
             <i class="fa fa-question-circle-o"></i>
             {{$t('RULE')}}
@@ -81,6 +83,10 @@ export default {
   methods: {
     showPopUp(){
       this.popupVisible = true;
+    },
+    revoke(){
+        let url = util.buildRevokeVoteSchema();
+        location.href = url;
     }
   },
   computed: {
@@ -94,9 +100,8 @@ export default {
       return null;
     },
     list(){
-      
       return util._.map(this.$store.state.my_votes_list, (item)=>{
-        console.log(3, item)
+        //console.log(3, item)
         item.time = util.moment.unix(item.Vote_Header.Block_time).format('YYYY-MM-DD HH:mm');
         item.id = item.Vote_Header.Txid;
         item.number = item.Vote_Header.Value;
@@ -153,8 +158,18 @@ export default {
       color: rgb(189, 171, 249);
       font-size: 14px;
       background: transparent;
-      border: none;
-    }
+        border: none;
+        }
+
+   .t4 {
+    position: absolute;
+    left: 12px;
+    bottom: 8px;
+    color: #bdabf9;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+}
   }
 
   .c-popup{
