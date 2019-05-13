@@ -182,11 +182,11 @@ export default {
         const d = _user_data;
 
         const to = _.map(nodePublicKeyList, (k) => {
-            return '"' + k + '"';
+            return k;
         }).join(',');
 
         const rt = encodeURIComponent(d.callbackUrl);
-        const pp = (`[${to}]`);
+        const pp = (`${to}`);
         let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
 
 
@@ -204,7 +204,7 @@ export default {
 
 
         const rt = encodeURIComponent(d.callbackUrl);
-        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=""`;
+        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}`;
 
 
 
