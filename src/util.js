@@ -10,7 +10,7 @@ const config = {
     appName: 'dopsvote.h5.app',
     appDid: 'iZW9ozTSXk4ukRXx7vCTTFYebZHFwMUtz7',
     appDidPublicKey: '03128A35842DD061BD016B9B2913BE07028063E5A80365D713DB77508406E85815',
-    callbackUrl: 'https://elaphantapp.github.io/dposvote/#/return_url',
+    callbackUrl: 'https://elaphant.net/dposvote/#/return_url',
     random: '998877'
 };
 const _user_data = {
