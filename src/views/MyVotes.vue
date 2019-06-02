@@ -9,9 +9,9 @@
         <div class="c-rule">
           <p class="t1">{{$t('VOTING_POWER_USED')}}/{{$t('TOTAL')}} (ELA)</p>
           <p class="t2">{{info.vp_used | toF2}}/{{info.ela_total | toF2}}</p>
-            <button class="t4" @click="revoke()">
+        <!--     <button class="t4" @click="revoke()">
             {{$t('09')}}
-          </button>
+          </button> -->
           <button class="t3" @click="showPopUp()">
             <i class="fa fa-question-circle-o"></i>
             {{$t('RULE')}}
