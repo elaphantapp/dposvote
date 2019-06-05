@@ -54,5 +54,7 @@ export default {
 
     Activate: 'Active',
     Inactivate: 'Inactive',
-    Pengding: 'Pending'
+    Pengding: 'Pending',
+    Active: 'Active',
+    Inactive: 'Inactive'
 };

@@ -118,13 +118,18 @@ export default {
     }else{
        this.isIos = false;  
     }
-    util._.delay(()=>{
+
+    util.register('set_tab', (key, tab)=>{
+      if(tab === 'tab3'){
+        util._.delay(()=>{
       const ud = util.getUserData();
-      console.log('user data =>', ud);
       if(ud){
-        this.$store.dispatch('set_me_info', {});
+          this.$store.dispatch('set_me_info', {});
       }
-    }, 1500);
+    }, 150);
+      }
+    })
+   
 
     
 

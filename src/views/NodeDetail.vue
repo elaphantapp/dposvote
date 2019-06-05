@@ -10,7 +10,7 @@
     <div class="kg-body">
       <div style="background:#fff;padding:0 15px;" v-if="!!node_detail">
         
-        <div class="c-head">
+        <div class="c-head" @click="clickFav(node_detail)">
           <img src="../assets/avatar.png" />
           <span>{{node_detail.Nickname}}</span>
           <i class="fa fa-star" :class="{'active':node_detail.fav}"></i>
@@ -132,6 +132,19 @@ export default {
   methods: {
     clickVoteBtn(){
       const url = util.buildVoteSchema([this.node_detail.Producer_public_key]);
+    },
+    clickFav(item){
+        
+       if(item.fav){
+        this.$store.dispatch('removeFavItem', item);
+        item.selected = false;
+        this.$store.dispatch('set_node_list', {});
+      }
+      else{ 
+        this.$store.dispatch('addFavItem', item);
+        item.selected = true;
+        this.$store.dispatch('set_node_list', {});
+      }
     }
   },
   created(){
