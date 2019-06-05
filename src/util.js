@@ -103,7 +103,7 @@ export default {
         }
     },
 
-    request(param = {}, mockResult = {}) {
+    request(mockResult = {}) {
         return new Promise((resolve) => {
             _.delay(() => {
                 resolve(mockResult);
@@ -158,8 +158,6 @@ export default {
             Sign: tmp.Sign
         };
         _.extend(_user_data, d);
-        console.log(2, _user_data);
-        // ls.set('user-data', _user_data);
     },
 
     getUrlParam,

@@ -22,11 +22,7 @@ export default {
       this.$router.replace('/');
     }
     else if(response){
-      // const queryString = response;
-      // console.log((queryString).replace(/\n| /g, ''))
       util.setUserData();
-      // this.$store.dispatch('set_me_info', {});
-
       this.$router.replace('/');
     }
   }

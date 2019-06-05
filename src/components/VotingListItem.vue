@@ -9,8 +9,8 @@
     <div class="c-icon">
       <img src="../assets/avatar.png" />
       <i class="c-status" :class="{
-        's1':item.State==='Activate', 
-        's2':item.State==='Inactivate'
+        's1':item.State==='Activate' || item.State==='Active', 
+        's2':item.State==='Inactivate' || item.State==='Inactive'
       }"></i>
     </div>
 
