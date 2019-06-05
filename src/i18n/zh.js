@@ -55,4 +55,5 @@ export default {
     Inactivate: '可投票（非活跃）',
     Pengding: '不可投票（注册中）',
     Active: '可投票',
+    Inactive:'可投票（非活跃）'
 };
