@@ -50,6 +50,16 @@
           </p>
         </div>
 
+         <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
+          <p class="p1">{{$t('10')}}</p>
+          <p class="p2">
+            <span id="id_copy_text" style="max-width:62%;text-overflow:ellipsis;overflow:hidden;float:left;">{{node_detail.Nodepublickey}}</span>
+  
+            <button class="c-copy kg-png btn" :data-clipboard-text="node_detail.Producer_public_key" style="background-position:-228px -142px; float:left; border:none;"></button>
+          </p>
+        </div>
+
       </div>
 
       <div style="background:#fff;padding:0 15px;margin-top:10px; padding-bottom: 0px;" v-if="votes_gap">

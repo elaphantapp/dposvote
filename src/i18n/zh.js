@@ -50,10 +50,11 @@ export default {
     '07': '与备选节点相差(第',
     '08': '名',
     '09': '撤回投票',
+    '10': '服务器公钥',
 
     Activate: '可投票',
     Inactivate: '可投票（非活跃）',
     Pengding: '不可投票（注册中）',
     Active: '可投票',
-    Inactive:'可投票（非活跃）'
+    Inactive: '可投票（非活跃）'
 };
