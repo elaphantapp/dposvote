@@ -51,6 +51,7 @@ export default {
     '07': 'Standby Node Cutoff(NO.',
     '08': '',
     '09': 'Revoke',
+    '10': 'Server Public Key',
 
     Activate: 'Active',
     Inactivate: 'Inactive',

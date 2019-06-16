@@ -185,7 +185,7 @@ export default {
 
         const rt = encodeURIComponent(d.callbackUrl);
         const pp = (`${to}`);
-        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
+        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
 
 
 
@@ -202,7 +202,7 @@ export default {
 
 
         const rt = encodeURIComponent(d.callbackUrl);
-        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&Signature=${d.appSign}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}`;
+        let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}`;
 
 
 
