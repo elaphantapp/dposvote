@@ -40,6 +40,17 @@
           <p class="p1">URL</p>
           <p class="p2">{{node_detail.Url}}</p>
         </div>
+
+        <div class="c-item">
+          <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
+          <p class="p1">{{$t('11')}}</p>
+          <p class="p2">
+            <span id="id_copy_text" style="max-width:98%;float:left;">{{node_detail.Address}}</span>
+  
+            <button class="c-copy kg-png btn" :data-clipboard-text="node_detail.Address" style="background-position:-228px -142px; float:left; border:none"></button>
+          </p>
+        </div>
+
         <div class="c-item">
           <div class="c-icon kg-png" style="background-position:-175px -140px;height:16px;"></div>
           <p class="p1">{{$t('PUBLIC_KEY')}}</p>

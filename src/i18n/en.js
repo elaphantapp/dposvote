@@ -52,6 +52,7 @@ export default {
     '08': '',
     '09': 'Revoke',
     '10': 'Server Public Key',
+    '11': 'ELA Reward',
 
     Activate: 'Active',
     Inactivate: 'Inactive',
