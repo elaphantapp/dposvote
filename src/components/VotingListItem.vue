@@ -111,7 +111,7 @@ export default {
     img{
       width: 100%;
       height: 100%;
-      border-radius: 50%;
+    //   border-radius: 50%;
       background-color:#7a84cc;
     }
   }
