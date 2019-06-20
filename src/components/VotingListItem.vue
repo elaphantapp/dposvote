@@ -7,7 +7,8 @@
     </div>
 
     <div class="c-icon">
-      <img src="../assets/avatar.png" />
+       <img v-if="item['imgLogo']" :src="item['imgLogo']"/>
+      <img v-else src="../assets/avatar.png" />
       <i class="c-status" :class="{
         's1':item.State==='Activate' || item.State==='Active', 
         's2':item.State==='Inactivate' || item.State==='Inactive'
@@ -32,6 +33,7 @@
 </template>
 <script>
 import util from '@/util';
+import axios from 'axios';
 export default {
   props : {
     item : null,
@@ -44,6 +46,18 @@ export default {
       default : true
     }
   },
+  created(){
+       if(this.item["imgLogo"]!=""){
+            return;
+       }
+       var url = 'https://elabank.net/supernode/' + this.item['Ownerpublickey'] + '/bpinfo.json';
+        axios.get(url).then((res) => {
+            var data = res.data || {};
+            var org = data["org"] || {};
+            var branding = org["branding"] || {};
+            this.item['imgLogo'] =  branding["logo_256"] || "";
+        });
+  },
   mounted() {
     
   },
@@ -55,7 +69,7 @@ export default {
       e.stopPropagation();
       this.favFn && this.favFn(this.item);
     }
-  }
+  } 
 }
 </script>
 <style lang="scss">
@@ -98,6 +112,7 @@ export default {
       width: 100%;
       height: 100%;
       border-radius: 50%;
+      background-color:#7a84cc;
     }
   }
   .c-bdy{
