@@ -3,8 +3,6 @@ import _ from 'lodash';
 import moment from 'moment';
 import PubSub from 'pubsub-js';
 import { Toast } from 'mint-ui';
-
-
 const config = {
     appId: '23091883A390CCBFFFED4928F996936AFCEBB1B57192532D15271158F3A277FD1BB3309DA2719334CBE1DE7BA2408047E2786A94F370CE66C208159B3A8D1162',
     appName: 'dopsvote.h5.app',
@@ -221,14 +219,10 @@ export default {
                 if (location.substring(0, 2) === "00") {
                     item["Location"] = parseInt(location.substring(2));
                 }
+                item['imgLogo'] = "";
                 arr.push(item);
             }
         }
-
         return arr;
     }
-
-
-
-
 }
