@@ -203,7 +203,7 @@ export default {
     img{
       width: 24px;
       height: 24px;
-      border-radius: 50%;
+      //border-radius: 50%;
       background-color:#7a84cc;
       position: absolute;
       left: 0;
