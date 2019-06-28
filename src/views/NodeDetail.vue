@@ -11,8 +11,9 @@
       <div style="background:#fff;padding:0 15px;" v-if="!!node_detail">
         
         <div class="c-head" @click="clickFav(node_detail)">
-          <img v-if="node_detail['imgLogo']" :src="node_detail['imgLogo']"/>
-          <img v-else src="../assets/avatar.png" />
+          <!-- <img v-if="node_detail['imgLogo']" :src="node_detail['imgLogo']"/> 
+          <img v-else src="../assets/avatar.png" />-->
+          <img src="../assets/avatar.png" />
           <span>{{node_detail.Nickname}}</span>
           <i class="fa fa-star" :class="{'active':node_detail.fav}"></i>
         </div>
@@ -203,8 +204,8 @@ export default {
     img{
       width: 24px;
       height: 24px;
-      //border-radius: 50%;
-      background-color:#7a84cc;
+      border-radius: 50%;
+      //background-color:#7a84cc;
       position: absolute;
       left: 0;
       top: 8px;
