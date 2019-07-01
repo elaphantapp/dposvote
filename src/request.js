@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const _axios = axios.create({
-    baseURL: 'https://api-wallet-ela.elastos.org/api/1',
+    baseURL: 'https://node1.elaphant.app/api/1',
     // baseURL: '/api/1',
 
 });
