@@ -4,11 +4,11 @@ import moment from 'moment';
 import PubSub from 'pubsub-js';
 import { Toast } from 'mint-ui';
 const config = {
-    appId: '23091883A390CCBFFFED4928F996936AFCEBB1B57192532D15271158F3A277FD1BB3309DA2719334CBE1DE7BA2408047E2786A94F370CE66C208159B3A8D1162',
-    appName: 'dopsvote.h5.app',
-    appDid: 'iZW9ozTSXk4ukRXx7vCTTFYebZHFwMUtz7',
-    appDidPublicKey: '03128A35842DD061BD016B9B2913BE07028063E5A80365D713DB77508406E85815',
-    callbackUrl: 'https://elaphant.net/#/return_url',
+    appId: '552453550a0ad3ad6cedd21a7bd47d2a3049ebb17099e892d92b93f9bd72bdeed9a439806118358422f3cb957a1ddebdc768ff667c2bd7359063d79d1618bf9c',
+    appName: 'dposvote.h5.app',
+    appDid: 'iiJRtAn6wyHaMSDQPS9Kkft3iiNjH5tTmi',
+    appDidPublicKey: '02752F9483DF73C57EDEA1F84F2431DC1036B2643F9519E78CB660D8C332793EDC',
+    callbackUrl: 'https://dposvote.elaphant.app/#/return_url',
     random: '998877'
 };
 const _user_data = {
