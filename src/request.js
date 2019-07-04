@@ -36,8 +36,8 @@ const F = {
         return _axios.get('/balance/' + address);
     },
 
-    getVoteByAddress(address) {
-        return _axios.get('/dpos/address/' + address);
+    getVoteByAddress(address, pageSize, pageNum) {
+        return _axios.get('/dpos/address/' + address + '?pageSize=' + pageSize + '&pageNum=' + pageNum);
     }
 };
 

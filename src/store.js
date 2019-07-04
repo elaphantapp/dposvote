@@ -186,16 +186,18 @@ export default new Vuex.Store({
             commit('set_me_info', {});
             const data = util.getUserData();
             data.vp_used = 0;
-            //data.Data.ELAAddress = 'Eg6eynFcPjZgEzbZ1LxjX6RGeDzaemtgPC';
+            //data.Data.ELAAddress = 'EdyqqiJcdkTDtfkvxVbTuNXGMdB3FEcpXA';
             request.getElaByAddress(data.Data.ELAAddress).then((d) => {
 
                 data.ela_total = d.result;
 
-                request.getVoteByAddress(data.Data.ELAAddress).then((d) => {
+                request.getVoteByAddress(data.Data.ELAAddress, 10, 1).then((d) => {
                     data.vp_used = 0;
-                    var list = util._.sortBy(d.result, function(item) {
-                        return -item.Vote_Header.Block_time;
-                    })
+                    // var list = util._.sortBy(d.result, function(item) {
+                    //     return -item.Vote_Header.Block_time;
+                    // })
+
+                    var list = d.result;
 
 
                     util._.each(d.result, (item) => {
