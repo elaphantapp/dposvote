@@ -32,13 +32,12 @@
   </div>
 </template>
 <script>
-import util from '@/util';
 import axios from 'axios';
 export default {
   props : {
     item : null,
     index : Number,
-    status : null,  //list, vote 
+    status : null,  //list,vote
     clickFn : null,
     favFn : null,
     showFav : {

@@ -191,13 +191,13 @@ export default new Vuex.Store({
 
                 data.ela_total = d.result;
 
-                request.getVoteByAddress(data.Data.ELAAddress).then((d) => {
+                request.getVoteByAddress(data.Data.ELAAddress, 10, 1).then((d) => {
                     data.vp_used = 0;
-                    var list = util._.sortBy(d.result, function(item) {
-                        return -item.Vote_Header.Block_time;
-                    })
+                    // var list = util._.sortBy(d.result, function(item) {
+                    //     return -item.Vote_Header.Block_time;
+                    // })
 
-
+                    var list = d.result;
                     util._.each(d.result, (item) => {
                         // console.log(parseFloat(item.Vote_Header.Value))
                         if (item.Vote_Header.Is_valid && item.Vote_Header.Is_valid === 'YES') {
