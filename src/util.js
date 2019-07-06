@@ -212,6 +212,7 @@ export default {
 
     handleNodeList(nodeList) {
         var arr = [];
+        var rank = 1;
         for (var index = 0; index < nodeList.length; index++) {
             var item = nodeList[index];
             if (item["State"] === "pending" || item["State"] === "Activate" || item["State"] === "inactive" || item["State"] === "Active" || item["State"] === "active" || item["State"] === "Inactive") {
@@ -220,6 +221,8 @@ export default {
                     item["Location"] = parseInt(location.substring(2));
                 }
                 item['imgLogo'] = "";
+                item['Rank'] = rank;
+                rank = rank + 1;
                 arr.push(item);
             }
         }
