@@ -215,7 +215,7 @@ export default {
         var rank = 1;
         for (var index = 0; index < nodeList.length; index++) {
             var item = nodeList[index];
-            if (item["State"] === "pending" || item["State"] === "Activate" || item["State"] === "inactive" || item["State"] === "Active" || item["State"] === "active" || item["State"] === "Inactive") {
+            if (item["State"] === "pending" || item["State"] === "Activate" || item["State"] === "Active" || item["State"] === "active") {
                 var location = item["Location"].toString();
                 if (location.substring(0, 2) === "00") {
                     item["Location"] = parseInt(location.substring(2));
