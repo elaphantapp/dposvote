@@ -121,6 +121,7 @@ export default {
   },
   methods: {
     ok(){
+      this.popupVisible = false;
       util.buildVoteSchema(this.list);
     },
     clickItem(item){
