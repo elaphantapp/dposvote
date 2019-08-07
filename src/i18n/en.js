@@ -53,7 +53,8 @@ export default {
     '09': 'Revoke',
     '10': 'Server Public Key',
     '11': 'ELA Reward',
-
+    '12': 'Inactive Node',
+    '13': 'OK',
     Activate: 'Active',
     Inactivate: 'Inactive',
     Pengding: 'Pending',

@@ -7,6 +7,25 @@
       
     </mt-header> -->
 
+     <mt-popup
+      v-model="popupVisible"
+      popup-transition="popup-fade">
+      <div class="c-popup">
+        <div class="c-header">{{$t('12')}}</div>
+        <div class="c-body" style="padding:10px 0px">
+          <ul style="width:300px;height:200px;overflow:auto;text-align:left;padding:0px 10px">
+            <li  v-for="(item, i) in list1" v-bind:key="i">{{item.Nickname}}</li>
+          </ul>
+          <p class="p3" style="text-align:center;width:300px">
+            <mt-button @click="popupVisible=false" size="large" type="primary" style="float:left;width:120px;margin-left:10px;margin-top:10px;margin-bottom:10px;">{{$t('CANCEL')}}</mt-button>
+            <mt-button @click="ok" size="large" type="primary" style="float:right;width:120px;margin-top:10px;margin-right:10px;margin-bottom:10px;">{{$t('13')}}</mt-button>
+          </p>
+     
+        </div>
+      </div>
+    </mt-popup>
+
+
     <div class="kg-body" v-if="data">
       <div class="c-top">
         <div class="c1">
@@ -60,7 +79,6 @@
 <script>
 import util from '@/util';
 import VotingListItem from '../components/VotingListItem';
-import Vue from 'vue'
 export default {
   components : {
     VotingListItem
@@ -68,7 +86,10 @@ export default {
 
   data(){
     return {
-      isIos:false,  
+      list1:[],
+      list:[],  
+      isIos:false,
+      popupVisible : false,  
       vote_status : 'list',
       select : {
         n : 0,
@@ -99,6 +120,9 @@ export default {
 
   },
   methods: {
+    ok(){
+      util.buildVoteSchema(this.list);
+    },
     clickItem(item){
       if(this.vote_status === 'list'){
         this.$store.commit('set_node_detail', item);
@@ -141,13 +165,24 @@ export default {
       // }, 3000);
 
       const list = [];
+      const list1 = [];
       util._.each(this.data.list, (item)=>{
         if(item.selected){
-          list.push(item.Producer_public_key);
+          if(item["State"] === "Activate" || item["State"] === "Active"){
+           list.push(item.Producer_public_key);
+          }else{
+            list1.push(item);
+          }
         }
-        
       });
-      const url = util.buildVoteSchema(list);
+       this.list = list;
+       this.list1 = list1;
+      if(list1.length>0){
+          this.popupVisible = true;
+          return;
+      }
+      
+      util.buildVoteSchema(list);
       
     },
     processSelectNumber(){
