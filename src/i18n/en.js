@@ -55,6 +55,7 @@ export default {
     '11': 'ELA Reward',
     '12': 'Inactive Node',
     '13': 'OK',
+    '14': 'The following nodes are inactive now. Click the "OK" button to continue voting for the active node in the current record.',
     Activate: 'Active',
     Inactivate: 'Inactive',
     Pengding: 'Pending',

@@ -11,14 +11,15 @@
       v-model="popupVisible"
       popup-transition="popup-fade">
       <div class="c-popup">
-        <div class="c-header">{{$t('12')}}</div>
+        <div class="c-header" style="padding:10px 0px 0px 10px">{{$t('12')}}</div>
         <div class="c-body" style="padding:10px 0px">
+          <p style="width:300px;;text-align:left;padding:0px 10px 10px 10px">{{$t('14')}}</p>
           <ul style="width:300px;height:200px;overflow:auto;text-align:left;padding:0px 10px">
             <li  v-for="(item, i) in list1" v-bind:key="i">{{item.Nickname}}</li>
           </ul>
           <p class="p3" style="text-align:center;width:300px">
-            <mt-button @click="popupVisible=false" size="large" type="primary" style="float:left;width:120px;margin-left:10px;margin-top:10px;margin-bottom:10px;">{{$t('CANCEL')}}</mt-button>
-            <mt-button @click="ok" size="large" type="primary" style="float:right;width:120px;margin-top:10px;margin-right:10px;margin-bottom:10px;">{{$t('13')}}</mt-button>
+            <mt-button @click="popupVisible=false" size="large" type="primary" style="float:left;width:120px;margin-left:10px;margin-top:10px;margin-bottom:10px;background: #5f6fed;">{{$t('CANCEL')}}</mt-button>
+            <mt-button @click="ok" size="large" type="primary" style="float:right;width:120px;margin-top:10px;margin-right:10px;margin-bottom:10px;background: #5f6fed;">{{$t('13')}}</mt-button>
           </p>
      
         </div>
