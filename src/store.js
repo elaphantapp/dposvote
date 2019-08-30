@@ -36,13 +36,15 @@ const F = {
         });
     },
     getFavList() {
-        const list = util.ls.get('fav_list');
+        var did = localStorage.getItem("dops-did") || "";
+        const list = util.ls.get('fav_list' + did);
         if (!list) return [];
 
         return list;
     },
     setFavList(list) {
-        util.ls.set('fav_list', list);
+        var did = localStorage.getItem("dops-did") || "";
+        util.ls.set('fav_list' + did, list);
     }
 };
 

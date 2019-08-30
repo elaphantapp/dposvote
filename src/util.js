@@ -148,6 +148,7 @@ export default {
         const Data = getUrlParam('Data', queryString);
 
         const tmp = JSON.parse(decodeURIComponent(Data));
+        localStorage.setItem("dops-did", tmp.DID);
         tmp.Sign = getUrlParam('Sign', queryString);
 
         const d = {
