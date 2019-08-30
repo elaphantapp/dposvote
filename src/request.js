@@ -17,7 +17,7 @@ _axios.interceptors.response.use((res) => {
 
 const F = {
     getNodeList(height) {
-        return _axios.get('/dpos/rank/height/' + height);
+        return _axios.get('/dpos/rank/height/' + height + '?state=active');
     },
 
     getCurrentBlockHeight() {
@@ -29,7 +29,7 @@ const F = {
     },
 
     getTotalVotes(height) {
-        return _axios.get('/dpos/vote/height/' + height + '?state=active');
+        return _axios.get('/dpos/vote/height/' + height);
     },
 
     getElaByAddress(address) {
