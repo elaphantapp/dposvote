@@ -29,7 +29,7 @@ const F = {
     },
 
     getTotalVotes(height) {
-        return _axios.get('/dpos/vote/height/' + height);
+        return _axios.get('/dpos/vote/height/' + height + '?state=active');
     },
 
     getElaByAddress(address) {
