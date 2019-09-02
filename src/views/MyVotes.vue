@@ -55,7 +55,7 @@
           
 
           <p class="p3">
-            <mt-button @click="popupVisible=false" size="large" type="primary">OK</mt-button>
+            <mt-button @click="popupVisible=false" size="large" type="primary">{{$t('13')}}</mt-button>
           </p>
           
         </div>

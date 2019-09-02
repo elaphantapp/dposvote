@@ -19,7 +19,7 @@ export default {
     NODE_DETAILS: 'Node Details',
     SEARCH: 'search',
     VOTE: 'Vote',
-    VOTING_POWER_USED: 'voting power Used',
+    VOTING_POWER_USED: 'Voting power Used',
     TOTAL: 'Total',
     RULE: 'Rules',
     ALL: 'All',
