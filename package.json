@@ -9,7 +9,7 @@
         "start": "npm run serve"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "clipboard": "^2.0.4",
         "font-awesome": "^4.7.0",
         "lodash": "^4.17.11",
