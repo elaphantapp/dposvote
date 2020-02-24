@@ -90,22 +90,7 @@ export default {
     const ud = util.getUserData();
     if(!ud){
       // request user data;
-
-      if(util.isChrome()){
-        const fakeQueryString = '#/return_url?Data=%7B%0A%20%20%22RandomNumber%22%20:%20%22998877%22,%0A%20%20%22PublicKey%22%20:%20%2203f27136e4c545e8021bd2ab86dda46143734df386355d4df921fe74c3a4a22711%22,%0A%20%20%22ELAAddress%22%20:%20%22ESV4kMRAiKpLMWMXcqAysFwPhQ3aSzQTzh%22,%0A%20%20%22DID%22%20:%20%22igGsfGmYiAkTcPju5wPzMniYZkj1F5xYSc%22%0A%7D&Sign=64B7408241D90655D14D4DF853E6C14A632056BF5B916BEBA7B09E7737655E0AF4BC84BB90D53B2EDE1FF903A5BD2EF361FDA9637B35337481CF8C252255D0BB';
-        util.setUserData(fakeQueryString);
-      
-        //this.$store.dispatch('set_me_info', {});
-      }
-      else{
-        // this.popupVisible = true;
         this.requestUserData();
-      }
-      
-      
-      
-      
-
     }
   },
   methods: {

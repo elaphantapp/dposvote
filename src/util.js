@@ -41,6 +41,28 @@ const getUrlParam = (name, url) => {
     return null;
 }
 
+const isPC = () => {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"
+    ];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+
+const isWechat = () => {
+    var ua = navigator.userAgent.toLowerCase();
+    return /micromessenger/i.test(ua) || typeof navigator.wxuserAgent !== 'undefined';
+}
+
+
 const _cache = {};
 const rc = {
     set(key, rs) {
@@ -87,6 +109,8 @@ export default {
     isChrome,
     isIos,
     isSafari,
+    isPC,
+    isWechat,
     loading(flag = false) {
         if (flag) {
             Indicator.open({
@@ -167,10 +191,12 @@ export default {
 
         const rt = encodeURIComponent(d.callbackUrl);
         let url = `elaphant://identity?ReturnUrl=${rt}&AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&DID=${d.appDid}&RandomNumber=${d.random}&AppName=${d.appName}&RequestInfo=elaaddress`;
-
-        console.log('login schema => ' + url);
-        location.href = url;
-
+        if (isPC() || isWechat()) {
+            let callUrl = "https://launch.elaphant.app?appName=dposvote&appTitle=dposvote&autoRedirect=True&redirectURL=" + encodeURIComponent(url);
+            location.href = callUrl;
+        } else {
+            location.href = url;
+        }
 
         return url;
     },
@@ -186,11 +212,12 @@ export default {
         const pp = (`${to}`);
         let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}&CandidatePublicKeys=${pp}`;
 
-
-
-        console.log('vote schema => ' + url);
-        location.href = url;
-
+        if (isPC() || isWechat()) {
+            let callUrl = "https://launch.elaphant.app?appName=dposvote&appTitle=dposvote&autoRedirect=True&redirectURL=" + encodeURIComponent(url);
+            location.href = callUrl;
+        } else {
+            location.href = url;
+        }
         return url;
     },
 
@@ -203,10 +230,12 @@ export default {
         const rt = encodeURIComponent(d.callbackUrl);
         let url = `elaphant://eladposvote?AppID=${d.appId}&PublicKey=${d.appDidPublicKey}&DID=${d.appDid}&AppName=${d.appName}&ReturnUrl=${rt}`;
 
-
-
-        console.log('vote schema => ' + url);
-        location.href = url;
+        if (isPC() || isWechat()) {
+            let callUrl = "https://launch.elaphant.app?appName=dposvote&appTitle=dposvote&autoRedirect=True&redirectURL=" + encodeURIComponent(url);
+            location.href = callUrl;
+        } else {
+            location.href = url;
+        }
 
         return url;
     },
