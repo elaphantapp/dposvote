@@ -87,8 +87,9 @@ export default {
     // console.log(111);
     this.active = this.$store.state.current_tab;
 
-    const ud = util.getUserData();
-    if(!ud){
+    //const ud = util.getUserData();
+    const ud = localStorage.setItem("dops-did") || "";
+    if(ud === ""){
       // request user data;
         this.requestUserData();
     }
