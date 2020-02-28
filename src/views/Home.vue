@@ -50,7 +50,6 @@
 <script>
 import Nodes from './Nodes';
 import MyVotes from './MyVotes';
-import MyFav from './MyFav';
 import util from '@/util';
 export default {
   name: 'home',
@@ -67,15 +66,14 @@ export default {
     // }
   },
   watch: {
-    active(val, oldVal){
+    active(val){
       this.$store.commit('set_tab', val);
       util.publish('set_tab', val);
     }
   },
   components: {
     Nodes,
-    MyVotes,
-    MyFav
+    MyVotes
   },
   created(){
     util.register('home-tab', (key, flag)=>{
@@ -96,6 +94,8 @@ export default {
         let islogo =localStorage.getItem("dopsvote-"+ud+"-login") || "";
         if(islogo === ""){
             this.requestUserData();
+        }else{
+            util.setUserData(islogo); 
         }
     }
   },

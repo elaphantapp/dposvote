@@ -1,15 +1,9 @@
-<template>
-  
-</template>
+
 <script>
 import util from '../util';
 export default {
   mounted(){
-    // util.toastInfo('return page')
-    console.log('callback page');
     util.loading(true);
-
-    const config = util.getConfig();
 
     const txid = util.getUrlParam('TXID');
     const response = util.getUrlParam('Data');
@@ -17,7 +11,6 @@ export default {
     
     if(txid){
       // vote callback
-      console.log('callback->txid : '+txid);
       util.toastInfo(this.$t('SUCCESS'));
       this.$router.replace('/');
     }
@@ -27,7 +20,7 @@ export default {
       if(olddid!=""&&curdid!=olddid){
            localStorage.setItem("dopsvote-"+curdid+"-login","");
       }else{
-           localStorage.setItem("dopsvote-"+curdid+"-login","test");
+           localStorage.setItem("dopsvote-"+curdid+"-login",location.hash);
       }
       util.setUserData();
       this.$router.replace('/');
