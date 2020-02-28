@@ -92,6 +92,11 @@ export default {
     if(ud === ""){
       // request user data;
         this.requestUserData();
+    }else{
+        let islogo =localStorage.getItem("dopsvote-"+ud+"-login") || "";
+        if(islogo === ""){
+            this.requestUserData();
+        }
     }
   },
   methods: {

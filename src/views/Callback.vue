@@ -22,6 +22,13 @@ export default {
       this.$router.replace('/');
     }
     else if(response){
+      let curdid = JSON.parse(decodeURIComponent(response))["DID"];
+      let olddid =  localStorage.getItem("dops-did") || "";
+      if(olddid!=""&&curdid!=olddid){
+           localStorage.setItem("dopsvote-"+curdid+"-login","");
+      }else{
+           localStorage.setItem("dopsvote-"+curdid+"-login","test");
+      }
       util.setUserData();
       this.$router.replace('/');
     }
